@@ -3,7 +3,7 @@ import { StyleSheet, View, Image, Text, ScrollView, TouchableOpacity } from 'rea
 import { Calendar } from 'react-native-calendars';
 
 
-const CalendarScreen = () => {
+export default function CalendarScreen() {
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedTime, setSelectedTime] = useState(null);
 
@@ -79,17 +79,17 @@ const CalendarScreen = () => {
   )
 }
 
-export default CalendarScreen
 
 const styles = StyleSheet.create({
   container: {
 
-    backgroundColor: '#f7f7f7',
+    backgroundColor: '#ececec',
     paddingHorizontal: 10
   },
   calendar: {
-    borderRadius: 10,
+    borderRadius: 15,
     marginBottom: 30,
+    elevation: 4,
   },
   Logo: {
 

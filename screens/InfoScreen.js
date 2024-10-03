@@ -8,7 +8,7 @@ const JornalScreen = () => {
 
       <View>
         <Text>
-          jornal ta funcionando tudo certinho
+          TELA INFO FUNCIONANDO PERFEITAMENTE (EM MANUTENCAO)
         </Text>
       </View>
 
