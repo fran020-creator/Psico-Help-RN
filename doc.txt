@@ -1,0 +1,27 @@
+voce vai criar um banco de dados no mongodb com qualquer nome, e vai fazer a conexão no index.js
+yarn para iniciar o banco de dados dentro da pasta api
+
+
+
+vai depois vai rodar no projeto no terminal psico-app
+yarn add @react-navigator/native
+npx expo install react-native-screens react-native-safe-area-context
+yarn add @react-navigation/native-stack
+yarn add @react-navigation/bottom-tabs
+
+ adb kill-server
+ adb start-server
+npx expo start, para iniciar o projeto
+
+
+\\\\\\\\\\\\\\\\\\\\\\\
+    age: {
+        type:String,
+        required:true,
+    },
+    
+        phone:{
+        type:String,
+        required:true,
+        unique:true
+    },
