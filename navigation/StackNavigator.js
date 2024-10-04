@@ -2,19 +2,22 @@ import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, Image, TouchableOpacity } from 'react-native'
 import RegisterScreen from '../screens/RegisterScreen'
 import LoginScreen from '../screens/LoginScreen'
 import HomeScreen from '../screens/HomeScreen'
 import CalendarScreen from '../screens/CalendarScreen'
 import InfoScreen from '../screens/InfoScreen'
 import PerfilScreen from '../screens/PerfilScreen'
+import ConfigScreen from '../screens/ConfigScreen'
 import Home from '../assets/image/navigator/home-Icon.png';
 import Calendar from '../assets/image/navigator/calendar-Icon.png'
 import Jornal from '../assets/image/navigator/info-Icon.png'
 import Perfil from '../assets/image/navigator/perfil-Icon.png'
-import { setStatusBarBackgroundColor } from 'expo-status-bar'
-const StackNavigator = () => {
+
+
+export default function StackNavigator() {
+
     const Tab = createBottomTabNavigator();
 
     function BottomTabs() {
@@ -95,11 +98,11 @@ const StackNavigator = () => {
                 <Stack.Screen name="Info" component={InfoScreen} options={{ headerShown: false }} />
 
                 <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
+
+                <Stack.Screen name="Config" component={ConfigScreen} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     )
 }
-
-export default StackNavigator
 
 const styles = StyleSheet.create({})

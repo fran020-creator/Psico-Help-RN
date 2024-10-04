@@ -1,27 +1,20 @@
-import { Platform, ScrollView, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { Platform, StyleSheet, Text, View, Image, StatusBar } from 'react-native'
 
 
 const HomeScreen = () => {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
+      <StatusBar backgroundColor="#ececec" barStyle="dark-content" />
 
-
-     <ScrollView>
-     <View>
-        <Text style={styles.title}>
-          Bem vindo novamente, Usuário
-        </Text>
+      <View style={styles.header}>
+        <Text style={styles.headerTitle}>Bem vindo novamente, Usuário</Text>
+        <Image source={require('../assets/image/calendar/config-Icon.png')} style={styles.configIcon} />
       </View>
-     
 
 
 
-
-
-        
-    </ScrollView>
     </SafeAreaView>
   )
 }
@@ -29,12 +22,20 @@ const HomeScreen = () => {
 export default HomeScreen
 
 const styles = StyleSheet.create({
-  title:{
-    fontWeight:"bold",
-    fontSize:20,
+  container : {
+    flex: 1,
+    backgroundColor: '#ececec',
   },
-  SafeAreaView:{
-    paddingTop:Platform.OS ==="android"?40:0,flex:1,backgroundColor:"white"
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginHorizontal: '3%',
+    marginVertical: '3%',
+    alignItems: 'center',
+  },
+  headerTitle: {
+    fontSize: 26,
+    fontWeight: 'bold',
+    color: 'black',
   }
-
 })

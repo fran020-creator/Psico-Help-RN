@@ -59,13 +59,13 @@ export default function CalendarScreen() {
 
       <View style={styles.doctorContainer}>
 
-        <Image source={require('../assets/ProfilePic.png')} style={styles.doctorImage} />
+        <Image source={require('../assets/image/calendar/profile-Pic-Icon.png')} style={styles.doctorImage} />
 
         <View style={styles.doctorDetails}>
           <Text style={styles.doctorSpecialty}>Psicóloga</Text>
           <Text style={styles.doctorName}>Mônica Soares Albuquerque especialista em tcc</Text>
           <View style={styles.ratingContainer}>
-            <Image source={require('../assets/StarFeedback.png')} />
+            <Image source={require('../assets/image/calendar/star-Feedback-Icon.png')} />
           </View>
         </View>
       </View>
@@ -100,12 +100,12 @@ const styles = StyleSheet.create({
 
   },
   selectedDateText: {
-    fontSize: 20,
+    fontSize: 22,
     marginTop: 10,
     marginBottom: 20,
     textAlign: 'center',
     fontWeight: 'bold',
-    color: '#9e77dd'
+    color: 'black'
   },
   timeScrollView: {
     height: 100
