@@ -13,7 +13,7 @@ export default function ConfigScreen() {
             <StatusBar backgroundColor="#e3e3e3" barStyle="dark-content" />
 
             <View style={styles.iconsHeader}>
-                <TouchableOpacity style={styles.buttonHead} onPress={() => navigation.navigate('Info')}>
+                <TouchableOpacity style={styles.buttonHead} onPress={() => navigation.goBack()}>
                     <Image style={styles.imageHead} source={require('../assets/image/profile/back-Icon.png')} />
                 </TouchableOpacity>
             </View>

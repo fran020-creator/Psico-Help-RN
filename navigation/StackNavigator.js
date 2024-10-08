@@ -96,8 +96,6 @@ export default function StackNavigator() {
 
                 <Stack.Screen name="Calendar" component={CalendarScreen} options={{ headerShown: false }} />
 
-                <Stack.Screen name="Info" component={InfoScreen} options={{ headerShown: false }} />
-
                 <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
 
                 <Stack.Screen name="Config" component={ConfigScreen} options={{ headerShown: false }} />
