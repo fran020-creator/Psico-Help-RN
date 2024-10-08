@@ -9,9 +9,10 @@ import axios from 'axios';
 
 
 export default function LoginScreen() {
+
+  const navigation = useNavigation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigation = useNavigation();
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
@@ -25,7 +26,9 @@ export default function LoginScreen() {
     axios.post("http://10.0.2.2:8000/login", user).then((response) => {
       console.log(response);
       const token = response.data.token;
+      const userEmail = response.data.email;
       AsyncStorage.setItem("authToken", token);
+      AsyncStorage.setItem("userEmail", userEmail);
       navigation.replace("Main")
     }).catch((error) => {
       Alert.alert("login error", "invalid email");

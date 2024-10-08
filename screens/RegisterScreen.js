@@ -7,19 +7,19 @@ import axios from 'axios';
 export default function RegisterScreen() {
 
   const [name, SetName] = useState("");
-  // const [age, SetAge] = useState("");
+  const [idade, SetIdade] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [phone, setPhone] = useState("");
+  const [celular, setCelular] = useState("");
   const navigation = useNavigation();
 
   const handleRegister = () => {
     const user = {
       name: name,
-      // age: age,
+      idade: idade,
       email: email,
       password: password,
-      // phone: phone,
+      celular: celular,
 
     };
 
@@ -31,10 +31,10 @@ export default function RegisterScreen() {
         "você se registrou"
       );
       SetName("");
-      // SetAge("");
+      SetIdade("");
       setEmail("");
       setPassword("");
-      // setPhone("");
+      setCelular("");
     }).catch((error) => {
       Alert.alert("ocorreu um erro ao se registrar", "um erro ocorreu");
       console.log("registro falhou", error);
@@ -59,7 +59,7 @@ export default function RegisterScreen() {
 
         <View style={styles.containerInput}>
           <Image source={require('../assets/image/register/age-Icon-Full.png')} style={styles.inputIcon} />
-          <TextInput value={name} onChangeText={(text) => SetName(text)} placeholder='Idade' placeholderTextColor={'black'} style={styles.inputBox} />
+          <TextInput value={idade} onChangeText={(text) => SetIdade(text)} placeholder='Idade' placeholderTextColor={'black'} style={styles.inputBox} />
         </View>
 
         <View style={styles.containerInput}>
@@ -75,7 +75,7 @@ export default function RegisterScreen() {
 
         <View style={styles.containerInput}>
           <Image source={require('../assets/image/register/phone-Icon-Full.png')} style={styles.inputIcon} />
-          <TextInput value={name} onChangeText={(text) => SetName(text)} placeholder='Celular' placeholderTextColor={'black'} style={styles.inputBox} />
+          <TextInput value={celular} onChangeText={(text) => setCelular(text)} placeholder='Celular' placeholderTextColor={'black'} style={styles.inputBox} />
         </View>
 
         <View style={styles.accountView}>

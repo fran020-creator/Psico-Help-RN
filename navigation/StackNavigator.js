@@ -1,19 +1,20 @@
-import React from 'react'
-import { NavigationContainer } from '@react-navigation/native'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { StyleSheet, Image, TouchableOpacity } from 'react-native'
-import RegisterScreen from '../screens/RegisterScreen'
-import LoginScreen from '../screens/LoginScreen'
-import HomeScreen from '../screens/HomeScreen'
-import CalendarScreen from '../screens/CalendarScreen'
-import InfoScreen from '../screens/InfoScreen'
-import PerfilScreen from '../screens/PerfilScreen'
-import ConfigScreen from '../screens/ConfigScreen'
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { StyleSheet, Image, TouchableOpacity } from 'react-native';
+import RegisterScreen from '../screens/RegisterScreen';
+import LoginScreen from '../screens/LoginScreen';
+import HomeScreen from '../screens/HomeScreen';
+import CalendarScreen from '../screens/CalendarScreen';
+import InfoScreen from '../screens/InfoScreen';
+import PerfilScreen from '../screens/PerfilScreen';
+import ConfigScreen from '../screens/ConfigScreen';
+import ConsultasScreen from '../screens/ConsultasScreen';
 import Home from '../assets/image/navigator/home-Icon.png';
-import Calendar from '../assets/image/navigator/calendar-Icon.png'
-import Jornal from '../assets/image/navigator/info-Icon.png'
-import Perfil from '../assets/image/navigator/perfil-Icon.png'
+import Calendar from '../assets/image/navigator/calendar-Icon.png';
+import Jornal from '../assets/image/navigator/info-Icon.png';
+import Perfil from '../assets/image/navigator/perfil-Icon.png';
 
 
 export default function StackNavigator() {
@@ -100,6 +101,8 @@ export default function StackNavigator() {
                 <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
 
                 <Stack.Screen name="Config" component={ConfigScreen} options={{ headerShown: false }} />
+
+                <Stack.Screen name="Consultas" component={ConsultasScreen} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     )

@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
-import { StyleSheet, View, Image, Text, ScrollView, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, Image, Text, ScrollView, TouchableOpacity, Alert } from 'react-native'
 import { Calendar } from 'react-native-calendars';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
 
 
 export default function CalendarScreen() {
@@ -8,6 +10,37 @@ export default function CalendarScreen() {
   const [selectedTime, setSelectedTime] = useState(null);
 
   const times = ["09:00", "12:00", "13:00", "14:00", "15:00", "16:00"];
+
+  const handleAgendamento = async () => {
+    try {
+      const userEmail = await AsyncStorage.getItem("userEmail");
+      console.log("Email do usuário recuperado:", userEmail);  // Verifique se o e-mail é exibido corretamente
+
+      if (!userEmail) {
+        Alert.alert("Erro", "O email do usuário não foi encontrado.");
+        return;
+      }
+
+      const agendamento = {
+        data: selectedDate,
+        hora: selectedTime,
+        emailUsuario: userEmail
+      };
+
+      axios.post("http://10.0.2.2:8000/agendamento", agendamento).then((response) => {
+        console.log(response);
+        Alert.alert("Registrado com sucesso", "Você se registrou");
+        setSelectedDate("");
+        setSelectedTime("");
+      }).catch((error) => {
+        Alert.alert("ja existe uma consulta nesse horario", "Mude o horario");
+        console.log("Registro falhou", error);
+      });
+    } catch (error) {
+      console.log("Erro ao recuperar o email do usuário", error);
+    }
+  };
+
 
   const handleDateSelect = (date) => {
     setSelectedDate(date);
@@ -70,7 +103,7 @@ export default function CalendarScreen() {
         </View>
       </View>
 
-      <TouchableOpacity style={styles.agendeButton}>
+      <TouchableOpacity onPress={() => {handleAgendamento() }} style={styles.agendeButton}>
         <Text style={styles.agendeButtonText}>AGENDE SUA CONSULTA</Text>
       </TouchableOpacity>
 

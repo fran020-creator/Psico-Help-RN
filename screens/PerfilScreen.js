@@ -55,7 +55,7 @@ export default function RegisterScreen() {
 
       <View style={styles.menuContainer}>
 
-          <TouchableOpacity style={styles.buttonPress} onPress={() => { }}>
+          <TouchableOpacity style={styles.buttonPress} onPress={() => { navigation.navigate('Consultas')}}>
             <View style={styles.menuButton}>
               <Image source={require('../assets/image/profile/agenda-Icon.png')} style={styles.iconButton} />
               <Text style={styles.buttonText}>Consultas agendadas</Text>
