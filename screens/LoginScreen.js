@@ -102,7 +102,7 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
   containerSafeView: {
     flex: 1,
-    backgroundColor: "#ececec",
+    backgroundColor: "#e3e3e3",
   },
   imageView: {
     alignItems: 'center',

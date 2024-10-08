@@ -116,7 +116,7 @@ export default function CalendarScreen() {
 const styles = StyleSheet.create({
   container: {
 
-    backgroundColor: '#ececec',
+    backgroundColor: '#e3e3e3',
     paddingHorizontal: 10
   },
   calendar: {

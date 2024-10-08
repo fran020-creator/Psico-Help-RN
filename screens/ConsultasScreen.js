@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Button, FlatList, Alert, StyleSheet } from 'react-native';
-import axios from 'axios';
+import { useNavigation } from '@react-navigation/native';
+import { SafeAreaView } from 'react-native-safe-area-context'
+import { View, Text, Button, FlatList, Alert, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
 
 const ConsultasAgendadasScreen = () => {
     const [consultas, setConsultas] = useState([]);
+    const navigation = useNavigation();
 
     useEffect(() => {
         const fetchConsultas = async () => {
@@ -50,15 +53,24 @@ const ConsultasAgendadasScreen = () => {
     );
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.title}>Consultas Agendadas</Text>
-            <FlatList
-                data={consultas}
-                renderItem={renderItem}
-                keyExtractor={item => item._id}
-                contentContainerStyle={styles.list}
-            />
-        </View>
+        <SafeAreaView style={styles.container}>
+
+            <View style={styles.iconsHeader}>
+                <TouchableOpacity style={styles.buttonHead} onPress={() => navigation.goBack()}>
+                    <Image style={styles.imageHead} source={require('../assets/image/profile/back-Icon.png')} />
+                </TouchableOpacity>
+            </View>
+
+            <View style={styles.container}>
+                <Text style={styles.title}>Consultas Agendadas</Text>
+                <FlatList
+                    data={consultas}
+                    renderItem={renderItem}
+                    keyExtractor={item => item._id}
+                    contentContainerStyle={styles.list}
+                />
+            </View>
+        </SafeAreaView>
     );
 };
 
@@ -66,7 +78,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 20,
-        backgroundColor: '#fff',
+        backgroundColor: '#e3e3e3',
     },
     title: {
         fontSize: 24,

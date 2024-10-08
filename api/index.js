@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 const jwt = require("jsonwebtoken")
 
 //  CONEXAO COM O BANCO DE DADOS
-mongoose.connect("EDIT HERE",{useNewUrlParser:true, useUnifiedTopology:true}).then(()=>{
+mongoose.connect("mongodb+srv://adm:adm@cluster0.qbpvh.mongodb.net/",{useNewUrlParser:true, useUnifiedTopology:true}).then(()=>{
     console.log("connectado ao banco de dados")
 }).catch((err)=>{
     console.log("error ao conectar ao mongo db",err);
