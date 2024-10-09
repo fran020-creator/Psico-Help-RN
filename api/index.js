@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 const jwt = require("jsonwebtoken")
 
 //  CONEXAO COM O BANCO DE DADOS
-mongoose.connect("mongodb+srv://adm:adm@cluster0.qbpvh.mongodb.net/",{useNewUrlParser:true, useUnifiedTopology:true}).then(()=>{
+mongoose.connect("mongodb+srv://ecommerce:francis@cluster0.cnx8d.mongodb.net/",{useNewUrlParser:true, useUnifiedTopology:true}).then(()=>{
     console.log("connectado ao banco de dados")
 }).catch((err)=>{
     console.log("error ao conectar ao mongo db",err);
@@ -89,7 +89,10 @@ app.post("/login",async(req,res)=>{
         // Retorne o token e o e-mail do usuário
         res.status(200).json({
             token,
-            email: user.email // Adicione o e-mail à resposta
+            email: user.email,
+            name:user.name, // Adicione o e-mail à resposta
+            idade:user.idade,
+            celular:user.celular
         });
     } catch (error) {
         res.status(500).json({message:"login failed"})

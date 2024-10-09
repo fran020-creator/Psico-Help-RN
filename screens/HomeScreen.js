@@ -1,15 +1,29 @@
-import React from 'react'
+import React, {useState,useEffect} from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { Platform, StyleSheet, Text, View, Image, StatusBar } from 'react-native'
+import {  StyleSheet, Text, View, Image, StatusBar } from 'react-native'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+
+
 
 
 const HomeScreen = () => {
+
+  const [userName,setUserName]=useState('')
+
+  useEffect(()=>{
+    const fetchUserName=async()=>{
+      const name = await AsyncStorage.getItem('userName');
+      setUserName(name || 'Usuário')
+    }
+    fetchUserName();
+  },[])
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar backgroundColor="#ececec" barStyle="dark-content" />
 
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Bem vindo novamente, Usuário</Text>
+        <Text style={styles.headerTitle}>Bem vindo novamente, {userName}</Text>
         <Image source={require('../assets/image/calendar/config-Icon.png')} style={styles.configIcon} />
       </View>
 

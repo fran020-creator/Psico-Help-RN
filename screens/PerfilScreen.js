@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, Text, View, Image, TouchableOpacity, Alert, StatusBar } from 'react-native'
@@ -6,6 +6,28 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 export default function RegisterScreen() {
+
+  const [userName,setUserName]=useState('')
+  const[userEmail,setUserEmail]=useState('')
+  const [userIdade,setUserIdade]=useState('')
+  const [userCelular,setUserCelular]=useState('')
+  useEffect(()=>{
+    const fetchUserName=async()=>{
+      const name = await AsyncStorage.getItem('userName');
+      const email = await AsyncStorage.getItem('userEmail')
+      const idade = await AsyncStorage.getItem('userIdade')
+      const celular = await AsyncStorage.getItem('userCelular')
+      setUserName(name || 'Usuário')
+      setUserEmail(email ||'Email')
+      setUserIdade(idade ||'Idade')
+      setUserCelular(celular ||'Celular')
+    }
+    fetchUserName();
+  },[])
+
+
+
+
 
   const navigation = useNavigation();
   const handleLogout = async () => {
@@ -36,7 +58,7 @@ export default function RegisterScreen() {
 
       <View style={styles.profileContainer}>
         <Image style={styles.profileImage} source={require('../assets/image/profile/exemple-Photo.png')} />
-        <Text style={styles.profileName}>Username</Text>
+        <Text style={styles.profileName}> {userName}</Text>
       </View>
 
       <View style={styles.infoContainer}>
@@ -47,9 +69,9 @@ export default function RegisterScreen() {
         </View>
 
         <View style={styles.textInfo}>
-          <Text style={styles.textData}>email@exemple.com.br</Text>
-          <Text style={styles.textData}>(21) 9472-8465</Text>
-          <Text style={styles.textData}>Idade 19</Text>
+          <Text style={styles.textData}>{userEmail}</Text>
+          <Text style={styles.textData}>{userCelular}</Text>
+          <Text style={styles.textData}>Idade {userIdade}</Text>
         </View>
       </View>
 
