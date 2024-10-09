@@ -48,7 +48,7 @@ export default function LoginScreen() {
 
 
     <SafeAreaView style={styles.containerSafeView}>
-      <StatusBar backgroundColor="#ececec" barStyle="dark-content" />
+      <StatusBar backgroundColor="#e3e3e3" barStyle="dark-content" />
 
       <View style={styles.imageView}>
         <Image style={styles.logoImage}

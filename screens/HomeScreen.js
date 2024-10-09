@@ -20,7 +20,7 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar backgroundColor="#ececec" barStyle="dark-content" />
+      <StatusBar backgroundColor="#e3e3e3" barStyle="dark-content" />
 
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Bem vindo novamente, {userName}</Text>
