@@ -1,7 +1,7 @@
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
-import { StyleSheet, Text, View, StatusBar, ScrollView, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, StatusBar, Image, TouchableOpacity, Linking } from 'react-native';
 export default function InfoScreen() {
 
   const navigation = useNavigation();
@@ -11,64 +11,58 @@ export default function InfoScreen() {
       <StatusBar backgroundColor="#e3e3e3" barStyle="dark-content" />
 
       <View style={styles.header}>
+
         <Text style={styles.headerTitle}>Info</Text>
         <TouchableOpacity onPress={() => navigation.navigate('Config')}>
           <Image source={require('../assets/image/calendar/config-Icon.png')} style={styles.configIcon} />
         </TouchableOpacity>
+
       </View>
-      <View style={styles.header}>
-        <Image
-          source={require('../assets/image/info/Background-profile.png')} // Substituir com o link da imagem do cérebro
-          style={styles.headerImage}
-        />
+
+      <View style={styles.banner}>
+        <Image source={require('../assets/image/info/background-Banner.png')} style={styles.bannerImage} />
+        <Image source={require('../assets/image/info/profile-Icon.png')} style={styles.avatar} />
       </View>
+
+      {/* <View style={styles.avatarContainer}>
+      </View> */}
 
       {/* Cartão com informações do perfil */}
-      <View style={styles.profileContainer}>
-        {/* Imagem do avatar */}
-        <View style={styles.avatarContainer}>
-          <Image
-            source={require('../assets/image/info/Profile-pic.png')} // Substituir com o link do avatar
-            style={styles.avatar}
-          />
-        </View>
-
+      <View style={styles.infoCard}>
         {/* Informações do profissional */}
-        <View style={styles.infoContainer}>
-          <Text style={styles.name}>Psicóloga</Text>
-          <Text style={styles.professionalName}>Mônica Soares Albuquerque</Text>
-          <Text style={styles.specialization}>Graduada em Psicologia, especializada em fenomenologia existencial</Text>
-        </View>
+        <Text style={styles.infoTitle}>Psicóloga</Text>
+        <Text style={styles.infoName}>Mônica Soares Albuquerque</Text>
+        <Text style={styles.specialization}>Graduada em Psicologia, especializada em fenomenologia existencial </Text>
+
       </View>
 
       {/* Caixa de descrição */}
-      <View style={styles.descriptionContainer}>
-        <Text style={styles.descriptionTitle}>Descrição</Text>
-        <Text style={styles.descriptionText}>Insira uma breve descrição aqui...</Text>
+      <View style={styles.descriptionCard}>
+        <Text style={styles.descriptionTitle}>Transforme sua vida com a Psicologia!</Text>
+        <Text style={styles.descriptionText}>Você já parou para pensar no real sentido da sua vida? Como psicóloga especializada em Fenomenologia Existencial, ajudo você a explorar seus pensamentos e sentimentos mais profundos, possibilitando uma jornada única de autoconhecimento e transformação. Através de um processo terapêutico humanizado, trabalhamos juntos para enfrentar ansiedades, desafios emocionais e existenciais, promovendo clareza, autenticidade e uma nova forma de se relacionar com o mundo.</Text>
       </View>
 
       {/* Seção de contatos */}
-      <View style={styles.contactsContainer}>
+      <View style={styles.contactsCard}>
+
         <Text style={styles.contactsTitle}>Contatos</Text>
-        <View style={styles.iconsContainer}>
-          {/* Imagem do Instagram */}
-          <Image
-            source={require('../assets/image/info/Insta-Icon.png')}  // Substitua com o caminho correto
-            style={styles.iconImage}
-          />
 
-          {/* Imagem do WhatsApp */}
-          <Image
-            source={require('../assets/image/info/Whats-Icon.png')}  // Substitua com o caminho correto
-            style={styles.iconImage}
-          />
+        <View style={styles.contactsIcons}>
 
-          {/* Imagem do LinkedIn */}
-          <Image
-            source={require('../assets/image/info/Linkedin-Icon.png')}  // Substitua com o caminho correto
-            style={styles.iconImage}
-          />
+          <TouchableOpacity onPress={() => Linking.openURL('https://www.instagram.com/monicasoalb?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==')}>
+            <Image source={require('../assets/image/info/Insta-Icon.png')} style={styles.iconImage} />
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => Linking.openURL('https://wa.me/5521974744286')}>
+            <Image source={require('../assets/image/info/Whats-Icon.png')} style={styles.iconImage} />
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => Linking.openURL('https://www.linkedin.com/in/monica-soares-de-albuquerque-929a8220b/')}>
+            <Image source={require('../assets/image/info/Linkedin-Icon.png')} style={styles.iconImage} />
+          </TouchableOpacity>
+
         </View>
+
       </View>
 
 
@@ -87,100 +81,105 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginHorizontal: '5%',
-    marginVertical: '3%',
+    marginVertical: '1%',
     alignItems: 'center',
   },
   headerTitle: {
     fontSize: 40,
     fontWeight: '600',
     color: 'black',
-  }, 
-  headerImage: {
+  },
+  banner: {
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 1,
+    shadowRadius: 6,
+    elevation: 5,
+    position: 'relative'
+  },
+  bannerImage: {
     width: '100%',
-    height: '100%',
+    height: 169,
     resizeMode: 'cover',
   },
-  profileContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: -50,
-    backgroundColor: '#fff',
-    padding: 20,
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.8,
-    shadowRadius: 2,
+  avatar: {
+    position: 'absolute',
+    top: '70%',
+    left: '40%',
     elevation: 5,
   },
-  avatarContainer: {
-    marginRight: 15,
+  infoCard: {
+    // alignItems: 'center',
+    marginTop: '13%',
+    marginHorizontal: '3%',
+    backgroundColor: '#fff',
+    padding: '4%',
+    borderRadius: 15,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 1,
+    shadowRadius: 2,
+    elevation: 10,
+    gap: 2,
   },
-  avatar: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
-    borderWidth: 2,
-    borderColor: '#fff',
-  },
-  infoContainer: {
-    flex: 1,
-  },
-  name: {
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  professionalName: {
+
+  infoTitle: {
     fontSize: 16,
-    color: '#555',
+    color: 'black',
+    fontWeight: '700',
+  },
+  infoName: {
+    fontSize: 14,
+    color: 'black',
+    fontWeight: '500',
   },
   specialization: {
     fontSize: 14,
-    color: '#777',
+    color: 'black',
   },
-  descriptionContainer: {
-    width: '90%',
+  descriptionCard: {
     backgroundColor: '#fff',
-    padding: 20,
-    borderRadius: 10,
-    marginTop: 20,
+    marginTop: '3%',
+    marginHorizontal: '10%',
+    padding: '3%',
+    borderRadius: 15,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.8,
+    shadowOpacity: 1,
     shadowRadius: 2,
     elevation: 5,
+    gap: 5,
   },
   descriptionTitle: {
-    fontSize: 18,
+    fontSize: 16,
+    color: 'black',
     fontWeight: 'bold',
   },
   descriptionText: {
     fontSize: 14,
-    color: '#777',
-    marginTop: 10,
+    color: 'black',
   },
-  contactsContainer: {
-    width: '90%',
+  contactsCard: {
     backgroundColor: '#fff',
-    padding: 20,
-    borderRadius: 10,
-    marginTop: 20,
+    marginTop: '5%',
+    marginHorizontal: '3%',
+    padding: '3%',
+    borderRadius: 15,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.8,
+    shadowOpacity: 1,
     shadowRadius: 2,
     elevation: 5,
-    alignItems: 'center',
+    gap: 15,
   },
   contactsTitle: {
     fontSize: 18,
     fontWeight: 'bold',
   },
-  iconsContainer: {
+  contactsIcons: {
     flexDirection: 'row',
-    marginTop: 15,
-  },
-  icon: {
-    marginHorizontal: 10,
+    paddingHorizontal: '4%',
+    paddingVertical: '1%',
+    gap: 30
   },
 });

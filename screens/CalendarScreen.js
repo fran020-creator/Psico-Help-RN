@@ -1,31 +1,33 @@
 import React, { useState } from 'react'
-import { StyleSheet, View, Image, Text, ScrollView, TouchableOpacity, Alert } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 import { Calendar } from 'react-native-calendars';
+import { StyleSheet, View, Image, Text, ScrollView, TouchableOpacity, Alert, } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 
 
 export default function CalendarScreen() {
+
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedTime, setSelectedTime] = useState(null);
-
   const times = ["09:00", "12:00", "13:00", "14:00", "15:00", "16:00"];
+
 
   const handleAgendamento = async () => {
     try {
       const userEmail = await AsyncStorage.getItem("userEmail");
       console.log("Email do usuário recuperado:", userEmail);  // Verifique se o e-mail é exibido corretamente
-
-      if (!userEmail) {
-        Alert.alert("Erro", "O email do usuário não foi encontrado.");
-        return;
-      }
-
+      
       const agendamento = {
         data: selectedDate,
         hora: selectedTime,
         emailUsuario: userEmail
       };
+
+      if (!userEmail) {
+        Alert.alert("Erro", "O email do usuário não foi encontrado.");
+        return;
+      }
 
       axios.post("http://10.0.2.2:8000/agendamento", agendamento).then((response) => {
         console.log(response);
@@ -48,7 +50,7 @@ export default function CalendarScreen() {
 
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
 
       <View>
         <Image source={require('../assets/image/calendar/psico-Icon.png')} style={styles.Logo} />
@@ -103,11 +105,11 @@ export default function CalendarScreen() {
         </View>
       </View>
 
-      <TouchableOpacity onPress={() => {handleAgendamento() }} style={styles.agendeButton}>
+      <TouchableOpacity onPress={() => { handleAgendamento() }} style={styles.agendeButton}>
         <Text style={styles.agendeButtonText}>AGENDE SUA CONSULTA</Text>
       </TouchableOpacity>
 
-    </View>
+    </SafeAreaView>
 
   )
 }
@@ -115,7 +117,7 @@ export default function CalendarScreen() {
 
 const styles = StyleSheet.create({
   container: {
-
+    // flex: 1,
     backgroundColor: '#e3e3e3',
     paddingHorizontal: 10
   },

@@ -43,7 +43,7 @@ export default function RegisterScreen() {
 
   return (
     <SafeAreaView style={styles.containerSafeView}>
-      <StatusBar backgroundColor="#ececec" barStyle="dark-content" />
+      <StatusBar backgroundColor="#e3e3e3" barStyle="dark-content" />
 
       <View style={styles.imageView}>
         <Image style={styles.logoImage} source={require('../assets/image/register/logo-Login.png')} />
@@ -101,7 +101,7 @@ export default function RegisterScreen() {
 const styles = StyleSheet.create({
   containerSafeView: {
     flex: 1,
-    backgroundColor: "#ececec",
+    backgroundColor: "#e3e3e3",
   },
   imageView: {
     alignItems: 'center',
