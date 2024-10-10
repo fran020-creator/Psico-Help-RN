@@ -47,6 +47,9 @@ export default function CalendarScreen() {
   const handleDateSelect = (date) => {
     setSelectedDate(date);
   };
+  const handleTimeSelect = (time) => {
+    setSelectedTime(time);
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -63,7 +66,7 @@ export default function CalendarScreen() {
         <Text style={styles.selectedDateTitle}> {selectedDate ? `Data selecionada ${selectedDate}` : 'Selecione uma data'} </Text>
       </View>
 
-      <Calendar style={styles.calendar} onDayPress={(day) => setSelectedDate(day.dateString)} markedDates={{
+      <Calendar style={styles.calendar} onDayPress={(day) => handleDateSelect(day.dateString)} markedDates={{
         [selectedDate]: { selected: true, selectedColor: '#9e77dd' }
       }}
         theme={{
@@ -77,7 +80,7 @@ export default function CalendarScreen() {
 
       <ScrollView horizontal contentContainerStyle={styles.timeScrollContainer} showsHorizontalScrollIndicator={true}>
         {times.map((time, index) => (
-          <TouchableOpacity key={index} style={[styles.timeButton, selectedTime === time && styles.selectedTimeButton,]} onPress={() => setSelectedTime(time)}>
+          <TouchableOpacity key={index} style={[styles.timeButton, selectedTime === time && styles.selectedTimeButton,]} onPress={() => handleTimeSelect(time)}>
             <Text style={[styles.timeText, selectedTime === time && styles.selectedTimeText,]}>
               {time}
             </Text>

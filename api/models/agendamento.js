@@ -9,7 +9,7 @@ const agendamentoSchema = new mongoose.Schema({
     hora:{
         type:String,
         required:true,
-        unique:true
+        
     },
     emailUsuario:{
         type:String,
