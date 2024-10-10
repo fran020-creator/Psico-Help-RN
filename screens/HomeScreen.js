@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
-import { StyleSheet, Text, View, TouchableOpacity, Image, StatusBar } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, StatusBar, } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
+import Stories from '../Stories';
 
 const HomeScreen = () => {
 
@@ -18,8 +20,9 @@ const HomeScreen = () => {
   }, [])
 
   return (
+    <>
     <SafeAreaView style={styles.container}>
-      <StatusBar backgroundColor="#e3e3e3" barStyle="dark-content" />
+      <StatusBar backgroundColor='#e3e3e3' barStyle="dark-content" />
 
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Bem vindo novamente, {userName}</Text>
@@ -27,10 +30,12 @@ const HomeScreen = () => {
           <Image source={require('../assets/image/calendar/config-Icon.png')} style={styles.configIcon} />
         </TouchableOpacity>
       </View>
+      
+      <Stories />
 
-
-
+      
     </SafeAreaView>
+    </>
   )
 }
 
@@ -52,5 +57,6 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     color: 'black',
-  }
+  },
+
 })

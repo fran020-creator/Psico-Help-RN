@@ -2,6 +2,7 @@ import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, Text, View, StatusBar, Image, TouchableOpacity, Linking } from 'react-native';
+
 export default function InfoScreen() {
 
   const navigation = useNavigation();
