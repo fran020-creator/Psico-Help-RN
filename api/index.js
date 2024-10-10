@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 const jwt = require("jsonwebtoken")
 
 //  CONEXAO COM O BANCO DE DADOS
-mongoose.connect("mongodb+srv://adm:adm@cluster0.qbpvh.mongodb.net/",{useNewUrlParser:true, useUnifiedTopology:true}).then(()=>{
+mongoose.connect("mongodb+srv://ecommerce:francisco@cluster0.cnx8d.mongodb.net/",{useNewUrlParser:true, useUnifiedTopology:true}).then(()=>{
     console.log("connectado ao banco de dados")
 }).catch((err)=>{
     console.log("error ao conectar ao mongo db",err);
@@ -113,10 +113,11 @@ app.post("/agendamento", async (req, res) => {
         }
 
         // Verifique se a hora já está agendada
-        const existingHora = await Agendamento.findOne({ hora });
-        if (existingHora) {
-            return res.status(400).json({ message: "Hora já agendada" });
+        const existingAgendamento = await Agendamento.findOne({ data, hora: hora.trim() });
+        if (existingAgendamento) {
+            return res.status(400).json({ message: "Hora já agendada para este dia." });
         }
+
 
         // Crie um novo agendamento
         const newAgendamento = new Agendamento({ data, hora, emailUsuario });
