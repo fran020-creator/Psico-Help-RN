@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
-import { StyleSheet, Text, View, Image, KeyboardAvoidingView, TextInput, Pressable, Alert, Platform, Switch, StatusBar } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { StyleSheet, Text, View, Image, KeyboardAvoidingView, ActivityIndicator, TextInput, Pressable, Alert, Platform, Switch, StatusBar } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 
@@ -14,9 +16,6 @@ export default function LoginScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
-
-
 
   const handleLogin = () => {
     const user = {
@@ -28,24 +27,53 @@ export default function LoginScreen() {
       const token = response.data.token;
       const userEmail = response.data.email;
       const userName = response.data.name;
-      const userIdade=response.data.idade;
-      const userCelular=response.data.celular;
-      
+      const userIdade = response.data.idade;
+      const userCelular = response.data.celular;
+
       AsyncStorage.setItem("authToken", token);
       AsyncStorage.setItem("userEmail", userEmail);
-     AsyncStorage.setItem("userName",userName);
-     AsyncStorage.setItem('userIdade',userIdade);
-     AsyncStorage.setItem( 'userCelular',userCelular);
+      AsyncStorage.setItem("userName", userName);
+      AsyncStorage.setItem('userIdade', userIdade);
+      AsyncStorage.setItem('userCelular', userCelular);
       navigation.replace("Main");
     }).catch((error) => {
       Alert.alert("login error", "invalid email");
       console.log(error);
     })
-
   };
 
-  return (
+  // Função para alternar o estado do Switch
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+  const [isLoggedIn, setIsLoggedIn] = useState(null); // null: carregando, false: não logado, true: logado
+  const Stack = createNativeStackNavigator();
 
+  const checkIfLoggedIn = async () => {
+    try {
+      const token = await AsyncStorage.getItem('@auth_token');
+      if (token) {
+        setIsLoggedIn(true); // Se o token existe, usuário está logado
+      } else {
+        setIsLoggedIn(false); // Se o token não existe, não está logado
+      }
+    } catch (error) {
+      console.log('Erro ao verificar o login:', error);
+    }
+  };
+
+  useEffect (() => {
+    checkIfLoggedIn(); // Verifica o login quando o app inicia
+  }, []);
+
+  // Exibe um indicador de carregamento enquanto verifica o login
+  if (isLoggedIn === null) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator size="large" color="#0000ff" />
+      </View>
+    );
+  }
+
+  return (
 
     <SafeAreaView style={styles.containerSafeView}>
       <StatusBar backgroundColor="#e3e3e3" barStyle="dark-content" />
@@ -89,6 +117,7 @@ export default function LoginScreen() {
             ios_backgroundColor="#3e3e3e"
             onValueChange={toggleSwitch}
             value={isEnabled}
+            onPress={() => {checkIfLoggedIn()}}
           />
         </View>
 
@@ -178,7 +207,7 @@ const styles = StyleSheet.create({
     marginTop: '2%',
     flexDirection: 'row',
     justifyContent: 'center',
-    transform: [{ scaleX: Platform.OS === 'ios' ? 1.1 : 1.5 },{ scaleY: Platform.OS === 'ios' ? 1.1 : 1.5 }]
+    transform: [{ scaleX: Platform.OS === 'ios' ? 1.1 : 1.5 }, { scaleY: Platform.OS === 'ios' ? 1.1 : 1.5 }]
   },
   buttonLog: {
     fontSize: 16,
