@@ -1,35 +1,32 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect} from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
-import { StyleSheet, Text, View, Image, TouchableOpacity, Alert, StatusBar } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity, Alert, StatusBar } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 export default function RegisterScreen() {
 
-  const [userName,setUserName]=useState('')
-  const[userEmail,setUserEmail]=useState('')
-  const [userIdade,setUserIdade]=useState('')
-  const [userCelular,setUserCelular]=useState('')
+  const [userName,setUserName]=useState('');
+  const [userEmail,setUserEmail]=useState('');
+  const [userIdade,setUserIdade]=useState('');
+  const [userCelular,setUserCelular]=useState('');
+  const navigation = useNavigation();
+
   useEffect(()=>{
     const fetchUserName=async()=>{
       const name = await AsyncStorage.getItem('userName');
-      const email = await AsyncStorage.getItem('userEmail')
-      const idade = await AsyncStorage.getItem('userIdade')
-      const celular = await AsyncStorage.getItem('userCelular')
-      setUserName(name || 'Usuário')
-      setUserEmail(email ||'Email')
-      setUserIdade(idade ||'Idade')
-      setUserCelular(celular ||'Celular')
+      const email = await AsyncStorage.getItem('userEmail');
+      const idade = await AsyncStorage.getItem('userIdade');
+      const celular = await AsyncStorage.getItem('userCelular');
+      setUserName(name || 'Usuário');
+      setUserEmail(email ||'Email');
+      setUserIdade(idade ||'Idade');
+      setUserCelular(celular ||'Celular');
     }
     fetchUserName();
   },[])
 
-
-
-
-
-  const navigation = useNavigation();
   const handleLogout = async () => {
     try {
 
@@ -144,7 +141,7 @@ const styles = StyleSheet.create({
   profileContainer: {
     paddingHorizontal: '12%',
     flexDirection: 'row',
-    gap: 25,
+    gap: 15,
     alignItems: 'center',
 
   },

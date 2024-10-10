@@ -21,22 +21,22 @@ export default function LoginScreen() {
   const handleLogin = () => {
     const user = {
       email: email,
-      password: password
+      password: password,
     }
     axios.post("http://10.0.2.2:8000/login", user).then((response) => {
       console.log(response);
       const token = response.data.token;
       const userEmail = response.data.email;
       const userName = response.data.name;
-      const userIdade=response.data.idade
-      const userCelular=response.data.celular
+      const userIdade=response.data.idade;
+      const userCelular=response.data.celular;
       
       AsyncStorage.setItem("authToken", token);
       AsyncStorage.setItem("userEmail", userEmail);
-     AsyncStorage.setItem("userName",userName)
-     AsyncStorage.setItem('userIdade',userIdade)
-     AsyncStorage.setItem( 'userCelular',userCelular)
-      navigation.replace("Main")
+     AsyncStorage.setItem("userName",userName);
+     AsyncStorage.setItem('userIdade',userIdade);
+     AsyncStorage.setItem( 'userCelular',userCelular);
+      navigation.replace("Main");
     }).catch((error) => {
       Alert.alert("login error", "invalid email");
       console.log(error);

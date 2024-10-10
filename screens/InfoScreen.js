@@ -11,12 +11,10 @@ export default function InfoScreen() {
       <StatusBar backgroundColor="#e3e3e3" barStyle="dark-content" />
 
       <View style={styles.header}>
-
         <Text style={styles.headerTitle}>Info</Text>
         <TouchableOpacity onPress={() => navigation.navigate('Config')}>
           <Image source={require('../assets/image/calendar/config-Icon.png')} style={styles.configIcon} />
         </TouchableOpacity>
-
       </View>
 
       <View style={styles.banner}>
@@ -24,31 +22,21 @@ export default function InfoScreen() {
         <Image source={require('../assets/image/info/profile-Icon.png')} style={styles.avatar} />
       </View>
 
-      {/* <View style={styles.avatarContainer}>
-      </View> */}
-
-      {/* Cartão com informações do perfil */}
       <View style={styles.infoCard}>
-        {/* Informações do profissional */}
         <Text style={styles.infoTitle}>Psicóloga</Text>
         <Text style={styles.infoName}>Mônica Soares Albuquerque</Text>
         <Text style={styles.specialization}>Graduada em Psicologia, especializada em fenomenologia existencial </Text>
-
       </View>
 
-      {/* Caixa de descrição */}
       <View style={styles.descriptionCard}>
         <Text style={styles.descriptionTitle}>Transforme sua vida com a Psicologia!</Text>
         <Text style={styles.descriptionText}>Você já parou para pensar no real sentido da sua vida? Como psicóloga especializada em Fenomenologia Existencial, ajudo você a explorar seus pensamentos e sentimentos mais profundos, possibilitando uma jornada única de autoconhecimento e transformação. Através de um processo terapêutico humanizado, trabalhamos juntos para enfrentar ansiedades, desafios emocionais e existenciais, promovendo clareza, autenticidade e uma nova forma de se relacionar com o mundo.</Text>
       </View>
 
-      {/* Seção de contatos */}
       <View style={styles.contactsCard}>
-
         <Text style={styles.contactsTitle}>Contatos</Text>
 
         <View style={styles.contactsIcons}>
-
           <TouchableOpacity onPress={() => Linking.openURL('https://www.instagram.com/monicasoalb?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==')}>
             <Image source={require('../assets/image/info/Insta-Icon.png')} style={styles.iconImage} />
           </TouchableOpacity>
@@ -60,11 +48,8 @@ export default function InfoScreen() {
           <TouchableOpacity onPress={() => Linking.openURL('https://www.linkedin.com/in/monica-soares-de-albuquerque-929a8220b/')}>
             <Image source={require('../assets/image/info/Linkedin-Icon.png')} style={styles.iconImage} />
           </TouchableOpacity>
-
         </View>
-
       </View>
-
 
     </SafeAreaView>
 

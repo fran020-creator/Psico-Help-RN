@@ -20,7 +20,6 @@ export default function RegisterScreen() {
       email: email,
       password: password,
       celular: celular,
-
     };
 
     //send a post request to the backend api

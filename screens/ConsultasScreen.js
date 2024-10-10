@@ -5,7 +5,7 @@ import { View, Text, Button, FlatList, Alert, StyleSheet, Image, TouchableOpacit
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 
-const ConsultasAgendadasScreen = () => {
+export default function ConsultasAgendadasScreen() {
     const [consultas, setConsultas] = useState([]);
     const navigation = useNavigation();
 
@@ -82,6 +82,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 24,
+        fontWeight: '500',
         marginBottom: 20,
     },
     list: {
@@ -95,5 +96,3 @@ const styles = StyleSheet.create({
         borderRadius: 5,
     },
 });
-
-export default ConsultasAgendadasScreen;

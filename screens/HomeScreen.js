@@ -1,22 +1,21 @@
-import React, {useState,useEffect} from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import {  StyleSheet, Text, View, Image, StatusBar } from 'react-native'
-import AsyncStorage from '@react-native-async-storage/async-storage'
-
-
-
+import React, { useState, useEffect } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, StatusBar } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const HomeScreen = () => {
 
-  const [userName,setUserName]=useState('')
+  const navigation = useNavigation();
+  const [userName, setUserName] = useState('');
 
-  useEffect(()=>{
-    const fetchUserName=async()=>{
+  useEffect(() => {
+    const fetchUserName = async () => {
       const name = await AsyncStorage.getItem('userName');
-      setUserName(name || 'Usuário')
+      setUserName(name || 'Usuário');
     }
     fetchUserName();
-  },[])
+  }, [])
 
   return (
     <SafeAreaView style={styles.container}>
@@ -24,7 +23,9 @@ const HomeScreen = () => {
 
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Bem vindo novamente, {userName}</Text>
-        <Image source={require('../assets/image/calendar/config-Icon.png')} style={styles.configIcon} />
+        <TouchableOpacity onPress={() => navigation.navigate('Config')}>
+          <Image source={require('../assets/image/calendar/config-Icon.png')} style={styles.configIcon} />
+        </TouchableOpacity>
       </View>
 
 
@@ -36,7 +37,7 @@ const HomeScreen = () => {
 export default HomeScreen
 
 const styles = StyleSheet.create({
-  container : {
+  container: {
     flex: 1,
     backgroundColor: '#e3e3e3',
   },
@@ -48,7 +49,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   headerTitle: {
-    fontSize: 26,
+    fontSize: 24,
     fontWeight: 'bold',
     color: 'black',
   }
