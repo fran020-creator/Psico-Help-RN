@@ -53,28 +53,72 @@ export default function RegisterScreen() {
       <KeyboardAvoidingView>
         <View style={styles.containerInput}>
           <Image source={require('../assets/image/register/user-Icon-Full.png')} style={styles.inputIcon} />
-          <TextInput value={name} onChangeText={(text) => SetName(text)} placeholder='Nome' placeholderTextColor={'black'} style={styles.inputBox} />
+          <TextInput style={styles.inputBox}
+          value={name} 
+          onChangeText={(text) => SetName(text)} 
+          placeholder='Nome' 
+          placeholderTextColor={'black'}
+          maxLength={35}
+          scrollEnabled={true}
+          multiline={false}
+          />
         </View>
 
         <View style={styles.containerInput}>
           <Image source={require('../assets/image/register/age-Icon-Full.png')} style={styles.inputIcon} />
-          <TextInput value={idade} onChangeText={(text) => SetIdade(text)} placeholder='Idade' placeholderTextColor={'black'} style={styles.inputBox} />
+          <TextInput style={styles.inputBox} 
+          value={idade} 
+          onChangeText={(text) => SetIdade(text)} 
+          placeholder='Idade'
+          placeholderTextColor={'black'}
+          maxLength={2}
+          keyboardType="numeric"
+          scrollEnabled={true}
+          multiline={false}
+          />
         </View>
 
         <View style={styles.containerInput}>
           <Image source={require('../assets/image/register/email-Icon-Full.png')} style={styles.inputIcon} />
-          <TextInput value={email} onChangeText={(text) => setEmail(text)} placeholder='Email' placeholderTextColor={'black'} style={styles.inputBox} />
+          <TextInput style={styles.inputBox}
+          value={email} 
+          onChangeText={(text) => setEmail(text)} 
+          placeholder='Email' 
+          placeholderTextColor={'black'}
+          keyboardType="email-address"
+          maxLength={40}
+          scrollEnabled={true}
+          multiline={false}
+          />
         </View>
 
         <View style={styles.containerInput}>
           <Image source={require('../assets/image/register/lock-Icon-Full.png')} style={styles.inputIcon} />
-          <TextInput value={password} onChangeText={(text) => setPassword(text)} secureTextEntry={true} placeholder='Senha' placeholderTextColor={'black'} style={styles.inputBox} />
+          <TextInput style={styles.inputBox}
+          value={password} 
+          onChangeText={(text) => setPassword(text)} 
+          secureTextEntry={true} 
+          placeholder='Senha' 
+          placeholderTextColor={'black'}
+          maxLength={20}
+          scrollEnabled={true}
+          multiline={false}
+          />
         </View>
 
 
         <View style={styles.containerInput}>
           <Image source={require('../assets/image/register/phone-Icon-Full.png')} style={styles.inputIcon} />
-          <TextInput value={celular} onChangeText={(text) => setCelular(text)} placeholder='Celular' placeholderTextColor={'black'} style={styles.inputBox} />
+          <TextInput style={styles.inputBox}
+          value={celular} 
+          onChangeText={(text) => setCelular(text)} 
+          placeholder='Celular' 
+          placeholderTextColor={'black'}
+          keyboardType="phone-pad"
+          maxLength={12}
+          scrollEnabled={true}
+          multiline={false}
+          />
         </View>
 
         <View style={styles.accountView}>
@@ -139,9 +183,11 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   inputBox: {
-    marginVertical: '4.5%',
+    flex: 1,
     fontSize: 18,
+    marginVertical: '4.5%',
     opacity: 0.7,
+    textAlign: 'left',
   },
   accountView: { 
     marginVertical: '4%',

@@ -88,12 +88,32 @@ export default function LoginScreen() {
       <KeyboardAvoidingView>
         <View style={styles.containerInput}>
           <Image source={require('../assets/image/register/user-Icon-Full.png')} style={styles.inputIcon} />
-          <TextInput value={email} onChangeText={(text) => setEmail(text)} placeholder='Email' placeholderTextColor={'black'} style={styles.inputBox} />
+          
+          <TextInput style={styles.inputBox}
+          value={email} 
+          onChangeText={(text) => setEmail(text)} 
+          placeholder='Email' 
+          placeholderTextColor={'black'} 
+          keyboardType="email-address"
+          maxLength={40}
+          autoCapitalize="none"
+          scrollEnabled={true}
+          multiline={false}
+          />
         </View>
 
         <View style={styles.containerInput}>
           <Image source={require('../assets/image/register/lock-Icon-Full.png')} style={styles.inputIcon} />
-          <TextInput value={password} onChangeText={(text) => setPassword(text)} secureTextEntry={true} placeholder='Senha' placeholderTextColor={'black'} style={styles.inputBox} />
+          <TextInput style={styles.inputBox} 
+          value={password} 
+          onChangeText={(text) => setPassword(text)} 
+          secureTextEntry={true} 
+          placeholder='Senha' 
+          placeholderTextColor={'black'} 
+          maxLength={20}
+          scrollEnabled={true}
+          multiline={false}
+          />
         </View>
 
         <View style={styles.containerButtons}>
@@ -158,8 +178,8 @@ const styles = StyleSheet.create({
   },
   containerInput: {
     flexDirection: 'row',
-    gap: 10,
     alignItems: 'center',
+    textAlign: 'center',
     backgroundColor: '#fff',
     paddingVertical: '0.5%',
     borderRadius: 12,
@@ -169,6 +189,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     elevation: 2, //sombra para android
     shadowColor: '#000', // Sombra para iOS
+    gap: 10,
   },
   inputIcon: {
     width: 24,
@@ -177,9 +198,11 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   inputBox: {
-    marginVertical: '4.5%',
+    flex: 1,
     fontSize: 18,
+    marginVertical: '4.5%',
     opacity: 0.7,
+    textAlign: 'left',
   },
   containerButtons: {
     flexDirection: "row",
@@ -215,10 +238,10 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
   nextButton: {
-    marginTop: '30%',
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    marginHorizontal: '5%',
+    marginTop: '25%',
+    marginHorizontal: '6%',
   },
   nextPress: {
     width: 65,
