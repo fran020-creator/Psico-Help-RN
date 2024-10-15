@@ -81,28 +81,28 @@ export default function RegisterScreen() {
             </View>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.buttonPress} onPress={() => { }}>
+          <TouchableOpacity style={styles.buttonPress} >
             <View style={styles.menuButton}>
               <Image source={require('../assets/image/profile/history-Icon.png')} style={styles.iconButton} />
               <Text style={styles.buttonText}>Histórico de consultas</Text>
             </View>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.buttonPress} onPress={() => { }}>
+          <TouchableOpacity style={styles.buttonPress}>
             <View style={styles.menuButton}>
               <Image source={require('../assets/image/profile/fav-Icon.png')} style={styles.iconButton} />
               <Text style={styles.buttonText}>Seus favoritos</Text>
             </View>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.buttonPress} onPress={() => { }}>
+          <TouchableOpacity style={styles.buttonPress}onPress={() => { navigation.navigate('ConvideAmigo')}}>
             <View style={styles.menuButton}>
               <Image source={require('../assets/image/profile/invite-Icon.png')} style={styles.iconButton} />
               <Text style={styles.buttonText}>Convide um amigo</Text>
             </View>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.buttonPress} onPress={() => { }}>
+          <TouchableOpacity style={styles.buttonPress} onPress={() => { navigation.navigate('FormaPagamento')}}>
             <View style={styles.menuButton}>
               <Image source={require('../assets/image/profile/payment-Icon.png')} style={styles.iconButton} />
               <Text style={styles.buttonText}>Formas de pagamento</Text>

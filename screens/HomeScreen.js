@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, Text, View, TouchableOpacity, Image, StatusBar, } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import Stories from '../Stories';
+import Stories from '../stories';
 
 const HomeScreen = () => {
 
@@ -30,9 +30,8 @@ const HomeScreen = () => {
           <Image source={require('../assets/image/calendar/config-Icon.png')} style={styles.configIcon} />
         </TouchableOpacity>
       </View>
-      
-      <Stories />
-
+       
+      <Stories/>
       
     </SafeAreaView>
     </>

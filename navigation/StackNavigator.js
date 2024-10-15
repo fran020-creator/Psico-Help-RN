@@ -15,6 +15,18 @@ import Home from '../assets/image/navigator/home-Icon.png';
 import Calendar from '../assets/image/navigator/calendar-Icon.png';
 import Jornal from '../assets/image/navigator/info-Icon.png';
 import Perfil from '../assets/image/navigator/perfil-Icon.png';
+import FormasPagamentosScreen from '../screens/FormasPagamentoScreen';
+import ConvideAmigoScreen from '../screens/ConvideAmigoScreen';
+import AjudaSuporteScreen from '../screens/AjudaSuporteScreen';
+import SobreScreen from '../screens/SobreScreen';
+import PrivacidadeSegurancaScreen from '../screens/PrivacidadeSegurancaScreen';
+import AcessibilidadeScreen from '../screens/AcessibilidadeScreen';
+import NotificacaoScreen from '../screens/NotificacaoScreen';
+import PixScreen from '../screens/PixScreen';
+import CartaoScreen from '../screens/CartaoScreen';
+import DinheiroScreen from '../screens/DinheiroScreen';
+
+
 
 
 export default function StackNavigator() {
@@ -101,6 +113,29 @@ export default function StackNavigator() {
                 <Stack.Screen name="Config" component={ConfigScreen} options={{ headerShown: false }} />
 
                 <Stack.Screen name="Consultas" component={ConsultasScreen} options={{ headerShown: false }} />
+
+                <Stack.Screen name="FormaPagamento" component={FormasPagamentosScreen} options={{ headerShown: false }} />
+
+                <Stack.Screen name='ConvideAmigo' component={ConvideAmigoScreen} options={{ headerShown: false }} />
+
+                <Stack.Screen name='AjudaSuporte' component={AjudaSuporteScreen} options={{ headerShown: false }} />
+
+                <Stack.Screen name='Sobre' component={SobreScreen} options={{ headerShown: false }} />
+
+                <Stack.Screen name='Privacidade' component={PrivacidadeSegurancaScreen} options={{ headerShown: false }} />
+
+                <Stack.Screen name='Acessibilidade' component={AcessibilidadeScreen} options={{ headerShown: false }} />
+
+                <Stack.Screen name='Notificacao' component={NotificacaoScreen} options={{ headerShown: false }} />
+
+                <Stack.Screen name='Pix' component={PixScreen} options={{ headerShown: false }} />
+
+                <Stack.Screen name='Cartao' component={CartaoScreen} options={{ headerShown: false }} />
+
+                <Stack.Screen name='Dinheiro' component={DinheiroScreen} options={{ headerShown: false }} />
+
+               
+
             </Stack.Navigator>
         </NavigationContainer>
     )

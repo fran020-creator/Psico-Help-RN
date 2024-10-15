@@ -29,26 +29,43 @@ export default function ConsultasAgendadasScreen() {
     }, []); // O array vazio garante que o efeito rode apenas uma vez, como componentDidMount
 
     const handleDelete = async (id) => {
-        try {
-            const token = await AsyncStorage.getItem('authToken');
-            await axios.delete(`http://10.0.2.2:8000/agendamentos/${id}`, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-            setConsultas(prevConsultas => prevConsultas.filter(consulta => consulta._id !== id));
-            Alert.alert('Sucesso', 'Consulta deletada com sucesso!');
-        } catch (error) {
-            console.error('Erro ao deletar consulta:', error);
-            Alert.alert('Erro', 'Não foi possível deletar a consulta.');
-        }
-    };
 
+        Alert.alert(
+            'Confirmar Deleção',
+            'Você tem certeza que deseja deletar esta consulta?',
+            [
+                {
+                    text: 'Cancelar',
+                    style: 'cancel'
+                },
+                {
+                    text: 'Deletar',
+                    onPress: async () => {
+                        try {
+                            const token = await AsyncStorage.getItem('authToken');
+                            await axios.delete(`http://10.0.2.2:8000/agendamentos/${id}`, {
+                                headers: {
+                                    Authorization: `Bearer ${token}`,
+                                },
+                            });
+                            setConsultas(prevConsultas => prevConsultas.filter(consulta => consulta._id !== id));
+                            Alert.alert('Sucesso', 'Consulta deletada com sucesso!');
+                        } catch (error) {
+                            console.error('Erro ao deletar consulta:', error);
+                            Alert.alert('Erro', 'Não foi possível deletar a consulta.');
+                        }
+                    },
+                },
+            ],
+            {cancelable:false}
+        )
+    
+    };
     const renderItem = ({ item }) => (
         <View style={styles.itemContainer}>
             <Text>Data: {item.data}</Text>
             <Text>Hora: {item.hora}</Text>
-            <Button title="Deletar" onPress={() => handleDelete(item._id)} />
+            <Button color={'#9896F1'} title="Deletar" onPress={() => handleDelete(item._id)} />
         </View>
     );
 
@@ -84,6 +101,7 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontWeight: '500',
         marginBottom: 20,
+        color: '#9896F1'
     },
     list: {
         paddingBottom: 20,
@@ -94,5 +112,6 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#ccc',
         borderRadius: 5,
+
     },
 });

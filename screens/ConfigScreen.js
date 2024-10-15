@@ -35,28 +35,28 @@ export default function ConfigScreen() {
 
 
             <View style={styles.menuContainer}>
-                <TouchableOpacity style={styles.buttonPress} onPress={() => { }}>
+                <TouchableOpacity style={styles.buttonPress} onPress={() => { navigation.navigate('Notificacao')}}>
                     <View style={styles.menuButton}>
                         <Image source={require('../assets/image/config/Noti-Icon.png')} style={styles.iconButton} />
                         <Text style={styles.buttonText}>Notificações</Text>
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.buttonPress} onPress={() => { }}>
+                <TouchableOpacity style={styles.buttonPress}onPress={() => { navigation.navigate('Privacidade')}}>
                     <View style={styles.menuButton}>
                         <Image source={require('../assets/image/config/Lock-Icon.png')} style={styles.iconButton} />
                         <Text style={styles.buttonText}>Privacidade & Segurança</Text>
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.buttonPress} onPress={() => { }}>
+                <TouchableOpacity style={styles.buttonPress} onPress={() => { navigation.navigate('Acessibilidade')}}>
                     <View style={styles.menuButton}>
                         <Image source={require('../assets/image/config/Acess-Icon.png')} style={styles.iconButton} />
                         <Text style={styles.buttonText}>Acessibilidade</Text>
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.buttonPress} onPress={() => { }}>
+                <TouchableOpacity style={styles.buttonPress} onPress={() => { navigation.navigate('AjudaSuporte')}}>
                     <View style={styles.menuButton}>
                         <Image source={require('../assets/image/config/Help-Icon.png')} style={styles.iconButton} />
                         <Text style={styles.buttonText}>Ajuda & Suporte</Text>
@@ -77,7 +77,7 @@ export default function ConfigScreen() {
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.buttonPress} onPress={() => { }}>
+                <TouchableOpacity style={styles.buttonPress} onPress={() => { navigation.navigate('Sobre')}}>
                     <View style={styles.menuButton}>
                         <Image source={require('../assets/image/config/About-Icon.png')} style={styles.iconButton} />
                         <Text style={styles.buttonText}>Sobre</Text>

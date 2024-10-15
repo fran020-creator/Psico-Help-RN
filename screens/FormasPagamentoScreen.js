@@ -27,21 +27,21 @@ export default function FormasPagamentosScreen() {
 
 
             <View style={styles.menuContainer}>
-                <TouchableOpacity style={styles.buttonPress}>
+                <TouchableOpacity style={styles.buttonPress} onPress={() => { navigation.navigate('Pix')}}>
                     <View style={styles.menuButton}>
                         <Image source={require('../assets/image/pagamento/pix.png')} style={styles.iconButton} />
                         <Text style={styles.buttonText}>Pix</Text>
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.buttonPress}>
+                <TouchableOpacity style={styles.buttonPress} onPress={() => { navigation.navigate('Cartao')}}>
                     <View style={styles.menuButton}>
                         <Image source={require('../assets/image/pagamento/cartao.png')} style={styles.iconButton} />
                         <Text style={styles.buttonText}>Cartão</Text>
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.buttonPress}>
+                <TouchableOpacity style={styles.buttonPress} onPress={() => { navigation.navigate('Dinheiro')}}>
                     <View style={styles.menuButton}>
                         <Image source={require('../assets/image/pagamento/dinheiro.png')} style={styles.iconButton} />
                         <Text style={styles.buttonText}>Dinheiro</Text>
@@ -62,11 +62,13 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         borderBottomWidth: 1,
         borderBottomColor: '#e0e0e0',
+        backgroundColor: '#e3e3e3'
     },
     headerTitle: {
+        paddingTop:30,
         fontSize: 24,
         fontWeight: 'bold',
-        color: 'black',
+        color: '#9896F1',
         textAlign: 'center',
         marginBottom:-29
     },
