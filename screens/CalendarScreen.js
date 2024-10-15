@@ -139,7 +139,6 @@ const styles = StyleSheet.create({
     paddingBottom: '1%',
     borderRadius: 15,
     marginHorizontal: '3%',
-    // marginBottom: '5%',
     elevation: 5,
   },
   timeScrollContainer: {

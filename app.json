@@ -9,16 +9,16 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#e3e3e3"
+      "backgroundColor": "#ececec"
     },
     "ios": {
       "supportsTablet": true,
-      "backgroundColor": "#e3e3e3"
+      "backgroundColor": "#ececec"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#e3e3e3"
+        "backgroundColor": "#ececec"
       }
     },
     "web": {

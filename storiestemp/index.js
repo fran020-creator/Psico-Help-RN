@@ -1,26 +1,27 @@
-import { View, Image, Pressable } from 'react-native';
+import { View, Image, Pressable, StatusBar } from 'react-native';
 import React, { useState } from 'react';
 
 import styles from './styles';
 import StatusWrapper from '../statusWrapper';
 
-const Stories = () => {
+const Stories = ({stories}) => {
 
     const [visible, setVisible] = useState(false);
 
     return (
         <>
+            <StatusBar backgroundColor="#000" barStyle="light-content" />
             <Pressable onPress={() => {
                 setVisible(true);
                 console.log('stories pressed ...')
                 }}>
                 <View>
                     <View>
-                        <Image source={require('../assets/image/home/stories-Mind-Photo.png')} />
+                        <Image style={styles.storiesPic} source={require('../assets/image/home/stories-Mind-Photo.png')} />
                     </View>
                 </View>
             </Pressable>
-            {visible  && <StatusWrapper visible={visible} onClose={() => setVisible(false)} />}
+            {visible  && <StatusWrapper statusData={stories.statusData} visible={visible} onClose={() => setVisible(false)} />}
         </>
     );
 };

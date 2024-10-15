@@ -11,10 +11,6 @@ import InfoScreen from '../screens/InfoScreen';
 import PerfilScreen from '../screens/PerfilScreen';
 import ConfigScreen from '../screens/ConfigScreen';
 import ConsultasScreen from '../screens/ConsultasScreen';
-import Home from '../assets/image/navigator/home-Icon.png';
-import Calendar from '../assets/image/navigator/calendar-Icon.png';
-import Jornal from '../assets/image/navigator/info-Icon.png';
-import Perfil from '../assets/image/navigator/perfil-Icon.png';
 import FormasPagamentosScreen from '../screens/FormasPagamentoScreen';
 import ConvideAmigoScreen from '../screens/ConvideAmigoScreen';
 import AjudaSuporteScreen from '../screens/AjudaSuporteScreen';
@@ -25,6 +21,10 @@ import NotificacaoScreen from '../screens/NotificacaoScreen';
 import PixScreen from '../screens/PixScreen';
 import CartaoScreen from '../screens/CartaoScreen';
 import DinheiroScreen from '../screens/DinheiroScreen';
+import Home from '../assets/image/navigator/home-Icon.png';
+import Calendar from '../assets/image/navigator/calendar-Icon.png';
+import Jornal from '../assets/image/navigator/info-Icon.png';
+import Perfil from '../assets/image/navigator/perfil-Icon.png';
 
 
 

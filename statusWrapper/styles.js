@@ -1,14 +1,13 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
-const width = Dimensions.get('window').width;
-const height = Dimensions.get('window').height;
+const { width, height } = Dimensions.get('window');
 
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#000',
         flex: 1,
-        paddingHorizontal: '3%',
+        backgroundColor: 'black',
+        // paddingHorizontal: '3%',
     },
     statusTabContainer: {
         width: '100%',
@@ -17,18 +16,23 @@ const styles = StyleSheet.create({
     },
     statusTab: {
         height: 3,
+        marginHorizontal: 2,
         backgroundColor: '#bbbbbb',
         flex: 1,
-    },
-    imageContainer: {
-        backgroundColor: '#222',
+    }, 
+    storiesBackground: {
         flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: width,
+        height: height / 0.8,    
     },
-    storieImage: {
-        width: '100%',
-        height: height / 1.2,
-        maxHeight: height / 1.2,
-    },
+    controller: {
+        position: 'absolute',
+        width: width / 2,
+        height: height * 0.9,
+        bottom: 0,
+    }
 });
 
 export default styles;
