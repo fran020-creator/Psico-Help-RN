@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SafeAreaView, View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, Image } from 'react-native';
+import { SafeAreaView, View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, Image, StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 const PixScreen = () => {
     const [pixKey, setPixKey] = useState('');
@@ -21,6 +21,8 @@ const PixScreen = () => {
     };
     return (
         <SafeAreaView style={styles.container}>
+            <StatusBar backgroundColor="#f5f5f5" barStyle="dark-content" />
+
             <View style={{ flex: 1 }} >
                 <TouchableOpacity onPress={() => navigation.goBack()}>
                     <Image source={require('../assets/image/profile/back-Icon.png')} />
@@ -94,14 +96,14 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
     },
-    qrCodeContainer:{
+    qrCodeContainer: {
         marginTop: 20,
         alignItems: 'center',
     },
     qrCodeImage: {
         width: 150,
         height: 150,
-        marginBottom:-90
+        marginBottom: -90
     },
     qrCodeText: {
         marginBottom: 10,

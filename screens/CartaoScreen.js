@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, Image,FlatList } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, Image, FlatList, StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const CartaoScreen = () => {
@@ -80,6 +80,7 @@ const CartaoScreen = () => {
 
     return (
         <View style={styles.container}>
+            <StatusBar backgroundColor="#f5f5f5" barStyle="dark-content" />
 
             <View >
                 <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -143,7 +144,7 @@ export default CartaoScreen
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#f5f5f5',
         padding: 20,
 
     },

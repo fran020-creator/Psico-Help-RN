@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Text, TextInput, TouchableOpacity, View, StyleSheet, Alert,Image } from 'react-native';
+import { Text, TextInput, TouchableOpacity, View, StyleSheet, Alert, Image, StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 const DinheiroScreen = () => {
     const [amount, setAmount] = useState('');
-    const [balance, setBalance] = useState(0); 
+    const [balance, setBalance] = useState(0);
     const navigation = useNavigation();
 
     const handleAddMoney = () => {
@@ -18,18 +18,19 @@ const DinheiroScreen = () => {
             return;
         }
 
-       
+
         setBalance(prevBalance => prevBalance + amountNumber);
         Alert.alert('Sucesso', `Valor de R$ ${amount} adicionado com sucesso!`);
-        setAmount(''); 
+        setAmount('');
     };
 
     return (
         <View style={styles.container}>
-            
+            <StatusBar backgroundColor="#f5f5f5" barStyle="dark-content" />
+
             <TouchableOpacity style={styles.buttonHead} onPress={() => navigation.goBack()}>
-                    <Image style={styles.imageHead} source={require('../assets/image/profile/back-Icon.png')} />
-                </TouchableOpacity>
+                <Image style={styles.imageHead} source={require('../assets/image/profile/back-Icon.png')} />
+            </TouchableOpacity>
 
             <Text style={styles.title}>Adicionar Dinheiro</Text>
 
@@ -47,7 +48,7 @@ const DinheiroScreen = () => {
 
             <View style={styles.balanceContainer}>
                 <Text style={styles.balanceTitle}>Seu saldo atual:</Text>
-                <Text style={styles.balance}>R$ {balance.toFixed(2)}</Text> 
+                <Text style={styles.balance}>R$ {balance.toFixed(2)}</Text>
             </View>
         </View>
     );
@@ -66,7 +67,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 20,
         textAlign: 'center',
-        color:'#9896F1'
+        color: '#9896F1'
     },
     input: {
         borderWidth: 1,

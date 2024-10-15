@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, StyleSheet, ScrollView, Image, TouchableOpacity,View } from 'react-native';
+import { Text, StyleSheet, ScrollView, Image, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 const AcessibilidadeScreen = () => {
     const navigation = useNavigation();
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     container: {
         flexGrow: 1,
         padding: 20,
-        backgroundColor: '#ffffff',
+        backgroundColor: '#e3e3e3',
     },
     title: {
         fontSize: 24,

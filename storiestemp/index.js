@@ -1,5 +1,5 @@
 import { View, Image, Pressable, StatusBar } from 'react-native';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import styles from './styles';
 import StatusWrapper from '../statusWrapper';
@@ -10,7 +10,6 @@ const Stories = ({stories}) => {
 
     return (
         <>
-            <StatusBar backgroundColor="#000" barStyle="light-content" />
             <Pressable onPress={() => {
                 setVisible(true);
                 console.log('stories pressed ...')

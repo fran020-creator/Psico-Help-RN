@@ -1,19 +1,19 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, Text, View, TouchableOpacity, Linking, StatusBar,Image } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View, TouchableOpacity, Linking, StatusBar, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const AjudaSuporteScreen = () => {
     const navigation = useNavigation();
     const handleContactSupport = () => {
-        Linking.openURL('https://mail.google.com/mail/u/0/#inbox?compose=new'); 
+        Linking.openURL('https://mail.google.com/mail/u/0/#inbox?compose=new');
     };
-  return (
-    <SafeAreaView style={styles.container}>
+    return (
+        <SafeAreaView style={styles.container}>
             <View >
                 <TouchableOpacity onPress={() => navigation.goBack()}>
                     <Image source={require('../assets/image/profile/back-Icon.png')} />
                 </TouchableOpacity>
-                </View>
+            </View>
             <StatusBar backgroundColor="#e3e3e3" barStyle="dark-content" />
             <Text style={styles.title}>Ajuda e Suporte</Text>
 
@@ -46,7 +46,7 @@ const AjudaSuporteScreen = () => {
                 <TouchableOpacity>
                     <Text style={styles.faqQuestion}>Link da documentação</Text>
                 </TouchableOpacity>
-                
+
             </View>
         </SafeAreaView>
     );
@@ -54,54 +54,56 @@ const AjudaSuporteScreen = () => {
 
 export default AjudaSuporteScreen
 
-const styles = StyleSheet.create({ container: {
-    flex: 1,
-    backgroundColor: '#e3e3e3',
-    padding: 20,
-},
-title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-    textAlign: 'center',
-    color:'#9896F1'
-},
-section: {
-    marginBottom: 20,
-    backgroundColor: '#fff',
-    borderRadius: 10,
-    padding: 15,
-    elevation: 3,
-},
-sectionTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 10,
-    color:'#9896F1'
-},
-faqItem: {
-    paddingVertical: 10,
-},
-faqQuestion: {
-    fontSize: 16,
-    color: '#007BFF',
-},
-contactButton: {
-    backgroundColor: '#9896F1',
-    padding: 10,
-    borderRadius: 5,
-    alignItems: 'center',
-    marginVertical: 10,
-},
-contactText: {
-    color: '#fff',
-    fontSize: 16,
-},
-contactInfo: {
-    fontSize: 16,
-    marginTop: 5,
-},
-tip: {
-    fontSize: 16,
-    marginVertical: 5,
-},})
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#e3e3e3',
+        padding: 20,
+    },
+    title: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        marginBottom: 20,
+        textAlign: 'center',
+        color: '#9896F1'
+    },
+    section: {
+        marginBottom: 20,
+        backgroundColor: '#fff',
+        borderRadius: 10,
+        padding: 15,
+        elevation: 3,
+    },
+    sectionTitle: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginBottom: 10,
+        color: '#9896F1'
+    },
+    faqItem: {
+        paddingVertical: 10,
+    },
+    faqQuestion: {
+        fontSize: 16,
+        color: '#007BFF',
+    },
+    contactButton: {
+        backgroundColor: '#9896F1',
+        padding: 10,
+        borderRadius: 5,
+        alignItems: 'center',
+        marginVertical: 10,
+    },
+    contactText: {
+        color: '#fff',
+        fontSize: 16,
+    },
+    contactInfo: {
+        fontSize: 16,
+        marginTop: 5,
+    },
+    tip: {
+        fontSize: 16,
+        marginVertical: 5,
+    },
+})

@@ -8,7 +8,7 @@ const SobreScreen = () => {
     return (
         <ScrollView contentContainerStyle={styles.container}>
 
-            <View >
+            <View>
                 <TouchableOpacity onPress={() => navigation.goBack()}>
                     <Image source={require('../assets/image/profile/back-Icon.png')} />
                 </TouchableOpacity>
@@ -16,7 +16,7 @@ const SobreScreen = () => {
 
             <Image source={require('../assets/image/register/logo-Login.png')} style={styles.logo} />
 
-            <Text style={styles.title}>Sobre o Aplicativo</Text>
+            <Text style={styles.title}>Sobre o Psico Help</Text>
 
             <Text style={styles.description}>
                 Este aplicativo foi desenvolvido para fornecer suporte psicológico e agendamento de consultas de maneira rápida e acessível.
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     container: {
         flexGrow: 1,
         padding: 30,
-        backgroundColor: '#ffffff',
+        backgroundColor: '#e3e3e3',
     },
     logo: {
         width: 193,

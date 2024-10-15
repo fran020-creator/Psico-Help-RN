@@ -1,10 +1,11 @@
 import React from 'react'
-import { StyleSheet } from 'react-native';
+import { StyleSheet, StatusBar } from 'react-native';
 import StackNavigator from './navigation/StackNavigator';
 
 export default function App() {
   return (
     <>
+      <StatusBar backgroundColor="#e3e3e3" barStyle="dark-content" />
         <StackNavigator />
     </>
   );
@@ -13,6 +14,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'ececec',
+    backgroundColor: '#e3e3e3',
   },
 });

@@ -1,4 +1,4 @@
-import { View, Image, Modal, TouchableOpacity, Text, Animated, Dimensions } from 'react-native';
+import { View, Image, Modal, TouchableOpacity, Animated, Dimensions, StatusBar } from 'react-native';
 import React, { useEffect, useState, useRef } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styles from './styles';

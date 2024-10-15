@@ -10,38 +10,36 @@ export default function FormasPagamentosScreen() {
 
 
         <SafeAreaView style={styles.container}>
+            <StatusBar backgroundColor="#f5f5f5" barStyle="dark-content" />
 
-
-
-            <StatusBar backgroundColor="#e3e3e3" barStyle="dark-content" />
             <View style={styles.header}>
 
                 <Text style={styles.headerTitle}>Formas de Pagamento</Text>
                 <View >
-                <TouchableOpacity  onPress={() => navigation.goBack()}>
-                    <Image source={require('../assets/image/profile/back-Icon.png')} />
-                </TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.goBack()}>
+                        <Image source={require('../assets/image/profile/back-Icon.png')} />
+                    </TouchableOpacity>
                 </View>
             </View>
 
 
 
             <View style={styles.menuContainer}>
-                <TouchableOpacity style={styles.buttonPress} onPress={() => { navigation.navigate('Pix')}}>
+                <TouchableOpacity style={styles.buttonPress} onPress={() => { navigation.navigate('Pix') }}>
                     <View style={styles.menuButton}>
                         <Image source={require('../assets/image/pagamento/pix.png')} style={styles.iconButton} />
                         <Text style={styles.buttonText}>Pix</Text>
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.buttonPress} onPress={() => { navigation.navigate('Cartao')}}>
+                <TouchableOpacity style={styles.buttonPress} onPress={() => { navigation.navigate('Cartao') }}>
                     <View style={styles.menuButton}>
                         <Image source={require('../assets/image/pagamento/cartao.png')} style={styles.iconButton} />
                         <Text style={styles.buttonText}>Cartão</Text>
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.buttonPress} onPress={() => { navigation.navigate('Dinheiro')}}>
+                <TouchableOpacity style={styles.buttonPress} onPress={() => { navigation.navigate('Dinheiro') }}>
                     <View style={styles.menuButton}>
                         <Image source={require('../assets/image/pagamento/dinheiro.png')} style={styles.iconButton} />
                         <Text style={styles.buttonText}>Dinheiro</Text>
@@ -55,22 +53,22 @@ export default function FormasPagamentosScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#e3e3e3',
+        backgroundColor: '#f5f5f5',
     },
     header: {
         padding: 16,
-        backgroundColor: '#fff',
+        backgroundColor: '#f5f5f5',
         borderBottomWidth: 1,
         borderBottomColor: '#e0e0e0',
-        backgroundColor: '#e3e3e3'
+        backgroundColor: '#f5f5f5'
     },
     headerTitle: {
-        paddingTop:30,
+        paddingTop: 30,
         fontSize: 24,
         fontWeight: 'bold',
         color: '#9896F1',
         textAlign: 'center',
-        marginBottom:-29
+        marginBottom: -29
     },
     menuContainer: {
         margin: 16,

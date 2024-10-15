@@ -10,19 +10,19 @@ const ConvideAmigoScreen = () => {
             Alert.alert('Erro', 'Por favor, preencha o campo de contato do amigo.');
             return;
         }
-        
+
         Alert.alert("Convite enviado!", `Um convite foi enviado para ${friendContact}`);
         setFriendContact('');
     };
     return (
         <SafeAreaView style={styles.container}>
-
-            <View >
+            <StatusBar backgroundColor="#f5f5f5" barStyle="dark-content" />
+            <View>
                 <TouchableOpacity onPress={() => navigation.goBack()}>
                     <Image source={require('../assets/image/profile/back-Icon.png')} />
                 </TouchableOpacity>
             </View>
-            <StatusBar backgroundColor="#e3e3e3" barStyle="dark-content" />
+            
             <Text style={styles.title}>Convide um amigo</Text>
             <Text style={styles.description}>
                 Convide seus amigos para se juntarem a nós e ganhe recompensas!
@@ -46,7 +46,7 @@ export default ConvideAmigoScreen
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#e3e3e3',
+        backgroundColor: '#f5f5f5',
         padding: 20,
 
     },
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 10,
         marginTop: 30,
-        color:'#9896F1'
+        color: '#9896F1'
 
     },
     description: {

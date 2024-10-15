@@ -57,9 +57,9 @@ export default function ConsultasAgendadasScreen() {
                     },
                 },
             ],
-            {cancelable:false}
+            { cancelable: false }
         )
-    
+
     };
     const renderItem = ({ item }) => (
         <View style={styles.itemContainer}>
