@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
-import { StyleSheet, Text, View, TouchableOpacity, Image, StatusBar, ScrollView, Pressable, } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, StatusBar, ScrollView, Pressable, Linking, Animated } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import Stories from '../storiestemp'
@@ -12,6 +12,11 @@ const HomeScreen = () => {
   const navigation = useNavigation();
   const [userName, setUserName] = useState('');
 
+  const [pressedButton, setPressedButton] = useState(null); // Armazena o índice do botão pressionado
+  const [opacityValue] = useState(new Animated.Value(1)); // Para animação de opacidade dos outros botões
+  const [scaleValue] = useState(new Animated.Value(1)); // Para animar o botão pressionado
+  
+
   useEffect(() => {
     const fetchUserName = async () => {
       const name = await AsyncStorage.getItem('userName');
@@ -20,6 +25,34 @@ const HomeScreen = () => {
     fetchUserName();
   }, [])
 
+
+  const handlePress = (buttonIndex) => {
+    setPressedButton(buttonIndex);
+
+    // Animação de sumir os outros botões
+    Animated.timing(opacityValue, {
+      toValue: 0,
+      duration: 500,
+      useNativeDriver: true,
+    }).start();
+
+    // Animação de crescimento do botão pressionado
+    Animated.sequence([
+      Animated.timing(scaleValue, {
+        toValue: 1.5, // O botão cresce para 1.5x o tamanho original
+        duration: 300,
+        useNativeDriver: true,
+      }),
+      Animated.spring(scaleValue, {
+        toValue: 1, // Retorna ao tamanho original com efeito de bounce
+        friction: 4,
+        tension: 100,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  };
+
+  
   return (
     <>
       <SafeAreaView style={styles.container}>
@@ -43,29 +76,34 @@ const HomeScreen = () => {
         </View>
 
         <View style={styles.buttonsContainer}>
-          <Pressable style={styles.buttonPress} >
-            <View style={[styles.buttonBack, { backgroundColor: '#EA8A8A',borderColor: '#963333'  }]}>
-              <Text style={styles.buttonTitle}> Mal </Text>
-            </View>
-          </Pressable>
-
-          <Pressable style={styles.buttonPress}>
-            <View style={[styles.buttonBack, { backgroundColor: '#F4BE56',borderColor: '#967433' }]}>
-              <Text style={styles.buttonTitle}> + ou - </Text>
-            </View>
-          </Pressable>
-
-          <Pressable style={styles.buttonPress}>
-            <View style={[styles.buttonBack, { backgroundColor: '#BCEC80',borderColor: '#82B83F' }]}>
-              <Text style={styles.buttonTitle}> Bem </Text>
-            </View>
-          </Pressable>
-
-          <Pressable style={styles.buttonPress}>
-            <View style={[styles.buttonBack, { backgroundColor: '#665AF2',borderColor: '#493FB8' }]}>
-              <Text style={styles.buttonTitle}> Ótimo </Text>
-            </View>
-          </Pressable>
+          {['Mal', '+ ou -', 'Bem', 'Ótimo'].map((feeling, index) => (
+            <Animated.View
+              key={index}
+              style={[
+                styles.buttonPress,
+                pressedButton !== null && pressedButton !== index
+                  ? { opacity: opacityValue } // Esconde os outros botões
+                  : {},
+                pressedButton === index && { transform: [{ scale: scaleValue }] }, // Animação do botão pressionado
+              ]}
+            >
+              {pressedButton === null || pressedButton === index ? (
+                <Pressable onPress={() => handlePress(index)}>
+                  <View
+                    style={[
+                      styles.buttonBack,
+                      {
+                        backgroundColor: index === 0 ? '#EA8A8A' : index === 1 ? '#F4BE56' : index === 2 ? '#BCEC80' : '#665AF2',
+                        borderColor: index === 0 ? '#963333' : index === 1 ? '#967433' : index === 2 ? '#82B83F' : '#493FB8',
+                      },
+                    ]}
+                  >
+                    <Text style={styles.buttonTitle}>{feeling}</Text>
+                  </View>
+                </Pressable>
+              ) : null}
+            </Animated.View>
+          ))}
         </View>
 
         <View style={styles.ArticlesContainer}>
@@ -80,7 +118,7 @@ const HomeScreen = () => {
           <View style={styles.ArticlesFlex}>
 
             <View style={styles.ArticlesDisplay}>
-              <Pressable>
+              <Pressable onPress={() => Linking.openURL('https://www.scielo.br/j/pusf/a/FKG4fvfsYGHwtn8C9QnDM4n/')}>
                 <Image source={require('../assets/image/home/article-Image1.png')} style={styles.ArticlesImage} />
               </Pressable>
 
@@ -89,7 +127,7 @@ const HomeScreen = () => {
 
             <View style={styles.ArticlesDisplay}>
 
-              <Pressable>
+              <Pressable onPress={() => Linking.openURL('https://amenteemaravilhosa.com.br/aprenda-a-se-expressar-melhor/')}>
                 <Image source={require('../assets/image/home/article-Image2.png')} style={styles.ArticlesImage} />
               </Pressable>
               <Text style={styles.ArticlesDescription}>Como se expressar melhor?</Text>
@@ -111,7 +149,6 @@ export default HomeScreen
 
 const styles = StyleSheet.create({
   container: {
-    // height: '100%',
     backgroundColor: '#e3e3e3',
   },
   header: {

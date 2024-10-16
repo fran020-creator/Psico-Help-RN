@@ -7,7 +7,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'black',
-        // paddingHorizontal: '3%',
     },
     statusTabContainer: {
         width: '100%',
@@ -15,24 +14,38 @@ const styles = StyleSheet.create({
         marginTop: '3%',
     },
     statusTab: {
+        flex: 1,
         height: 3,
         marginHorizontal: 2,
         backgroundColor: '#bbbbbb',
-        flex: 1,
     }, 
     storiesBackground: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         width: width,
-        height: height / 0.8,    
+        height: height / 1.2,
     },
     controller: {
         position: 'absolute',
         width: width / 2,
         height: height * 0.9,
         bottom: 0,
-    }
+    },
+    closeButton: { 
+        width: 27,
+        height: 27,
+        borderRadius: 10,
+        marginVertical: '2%',
+        marginHorizontal: '3%',
+        alignSelf: 'flex-end',
+        backgroundColor: 'yellow'
+    },
+    close: {
+        width: 27,
+        height: 27,
+        tintColor: '#fff',
+    },
 });
 
 export default styles;

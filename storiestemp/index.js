@@ -7,7 +7,7 @@ import StatusWrapper from '../statusWrapper';
 const Stories = ({stories}) => {
 
     const [visible, setVisible] = useState(false);
-
+    
     return (
         <>
             <Pressable onPress={() => {

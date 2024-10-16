@@ -1,4 +1,4 @@
-import { View, Image, Modal, TouchableOpacity, Animated, Dimensions, StatusBar } from 'react-native';
+import { View, Text, Image, Modal, TouchableOpacity, Animated, Dimensions, StatusBar, Pressable } from 'react-native';
 import React, { useEffect, useState, useRef } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styles from './styles';
@@ -43,7 +43,7 @@ const StatusWrapper = ({ statusData, visible, onClose }) => {
     }
 
     return (
-        <Modal visible={visible} transparent={false} animationType="slide" onRequestClose={() => setModalVisible(false)}>
+        <Modal visible={visible} transparent={false} animationType="slide">
 
             <SafeAreaView style={styles.container}>
 
@@ -55,6 +55,9 @@ const StatusWrapper = ({ statusData, visible, onClose }) => {
                     )}
                 </View>
 
+                {/* <Pressable onPress={() => {onClose(true)}} style={styles.closeButton} >
+                    <Image style={styles.close} source={require('../assets/image/home/close.png')} />
+                </Pressable> */}
 
                 <Image
                     source={current.data.img}
