@@ -23,7 +23,7 @@ export default function RegisterScreen() {
     };
 
     //send a post request to the backend api
-    axios.post("http://10.0.2.2:8000/register", user).then((response) => {
+    axios.post("http://192.168.0.223:8000/register", user).then((response) => {
       console.log(response);
       Alert.alert(
         "registrado com sucesso",

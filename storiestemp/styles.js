@@ -5,6 +5,8 @@ const styles = StyleSheet.create({
         borderColor: '#5F00BE', //roxo neon
         borderWidth: 3,
         borderRadius: 15,
+        width: 86,
+        height: 95,
     },
 });
 

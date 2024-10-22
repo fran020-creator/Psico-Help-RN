@@ -5,8 +5,14 @@ import styles from './styles';
 
 const StatusWrapper = ({ statusData, visible, onClose }) => {
 
-    const [current, setCurrent] = useState({ data: statusData[0], index: 0 });
+    const [current, setCurrent] = useState({ data: null, index: 0 });
     const { width } = Dimensions.get('window');
+
+    useEffect(() => {
+        if (visible && statusData.length > 0) {
+            setCurrent({ data: statusData[0], index: 0 });
+        }
+    }, [visible, statusData]);
 
     useEffect(() => {
 
@@ -40,7 +46,23 @@ const StatusWrapper = ({ statusData, visible, onClose }) => {
         return (
             <Animated.Text style={{ backgroundColor: '#fff', width: progressAnim }}></Animated.Text>
         )
-    }
+    };
+
+    // Alterando a cor da StatusBar ao abrir o modal
+    useEffect(() => {
+        if (visible) {
+            StatusBar.setBarStyle('light-content'); // Muda os ícones para claro
+            StatusBar.setBackgroundColor('#000'); // Altera a cor de fundo da StatusBar
+        } else {
+            StatusBar.setBarStyle('dark-content'); // Reverte os ícones para escuro
+            StatusBar.setBackgroundColor('#e3e3e3'); // Altera a cor de fundo padrão
+        }
+
+        return () => {
+            StatusBar.setBarStyle('dark-content'); // Reverte ao padrão ao fechar
+            StatusBar.setBackgroundColor('#e3e3e3'); // Altera para a cor padrão desejada
+        };
+    }, [visible]);
 
     return (
         <Modal visible={visible} transparent={false} animationType="slide">
@@ -60,7 +82,7 @@ const StatusWrapper = ({ statusData, visible, onClose }) => {
                 </Pressable> */}
 
                 <Image
-                    source={current.data.img}
+                    source={current.data?.img}
                     style={styles.storiesBackground}
                     resizeMode="contain"
                 >

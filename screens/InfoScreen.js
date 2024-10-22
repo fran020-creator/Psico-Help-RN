@@ -77,9 +77,9 @@ const styles = StyleSheet.create({
   },
   banner: {
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 5 },
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 1,
-    shadowRadius: 6,
+    shadowRadius: 2,
     elevation: 5,
     position: 'relative'
   },
@@ -104,7 +104,6 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
   },
   infoCard: {
-    // alignItems: 'center',
     marginTop: '13%',
     marginHorizontal: '3%',
     backgroundColor: '#fff',

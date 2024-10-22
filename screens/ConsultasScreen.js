@@ -13,7 +13,7 @@ export default function ConsultasAgendadasScreen() {
         const fetchConsultas = async () => {
             try {
                 const token = await AsyncStorage.getItem('authToken');
-                const response = await axios.get('http://10.0.2.2:8000/agendamentos', {
+                const response = await axios.get('http://192.168.0.223:8000/agendamentos', {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -43,7 +43,7 @@ export default function ConsultasAgendadasScreen() {
                     onPress: async () => {
                         try {
                             const token = await AsyncStorage.getItem('authToken');
-                            await axios.delete(`http://10.0.2.2:8000/agendamentos/${id}`, {
+                            await axios.delete(`http://192.168.0.223:8000/agendamentos/${id}`, {
                                 headers: {
                                     Authorization: `Bearer ${token}`,
                                 },

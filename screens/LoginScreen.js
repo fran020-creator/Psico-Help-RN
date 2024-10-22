@@ -22,7 +22,7 @@ export default function LoginScreen() {
       email: email,
       password: password,
     }
-    axios.post("http://10.0.2.2:8000/login", user).then((response) => {
+    axios.post("http://192.168.0.223:8000/login", user).then((response) => {
       console.log(response);
       const token = response.data.token;
       const userEmail = response.data.email;

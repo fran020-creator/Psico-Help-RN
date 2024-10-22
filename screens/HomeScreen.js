@@ -67,7 +67,9 @@ const HomeScreen = () => {
 
         <ScrollView style={styles.timeScrollContainer} horizontal={true}>
           <View style={styles.storiesRow}>
-            {statusData.map((stories, index) => <Stories key={index} stories={stories} />)}
+            {statusData.map((story) => (
+              <Stories key={story.id} story={story}/>
+            ))}
           </View>
         </ScrollView>
 

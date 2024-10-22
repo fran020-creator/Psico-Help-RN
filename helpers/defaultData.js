@@ -3,13 +3,18 @@ import img2 from '../assets/image/home/stories/psico-storie2.png';
 import img3 from '../assets/image/home/stories/psico-storie3.png';
 import img4 from '../assets/image/home/stories/psico-storie4.png';
 
+import icon1 from '../assets/image/home/stories/stories-Icon1.png';
+import icon2 from '../assets/image/home/stories/stories-Icon2.png';
+import icon3 from '../assets/image/home/stories/stories-Icon3.png';
+import icon4 from '../assets/image/home/stories/stories-Icon4.png';
+import icon5 from '../assets/image/home/stories/stories-Icon5.png';
+import icon6 from '../assets/image/home/stories/stories-Icon6.png';
+
 export const statusData = [
     {
         id: 1,
-        img: img1,
+        icon: icon1,
         text: 'this is a status text 1',
-        avatar: '',
-        name: '',
         statusData: [
             {
                 id: 1,
@@ -25,10 +30,8 @@ export const statusData = [
     },
     {
         id: 2,
-        img: img1,
+        icon: icon2,
         text: 'this is a status text 1',
-        avatar: '',
-        name: '',
         statusData: [
             {
                 id: 1,
@@ -41,7 +44,7 @@ export const statusData = [
                 text: 'this is a status text 1',
             },
             {
-                id: 2,
+                id: 3,
                 img: img1,
                 text: 'this is a status text 1',
             },
@@ -50,10 +53,8 @@ export const statusData = [
     },
     {
         id: 3,
-        img: img1,
+        icon: icon3,
         text: 'this is a status text 1',
-        avatar: '',
-        name: '',
         statusData: [
             {
                 id: 1,
@@ -66,7 +67,7 @@ export const statusData = [
                 text: 'this is a status text 1',
             },
             {
-                id: 2,
+                id: 3,
                 img: img1,
                 text: 'this is a status text 1',
             },
@@ -75,10 +76,8 @@ export const statusData = [
     },
     {
         id: 4,
-        img: img1,
+        icon: icon4,
         text: 'this is a status text 1',
-        avatar: '',
-        name: '',
         statusData: [
             {
                 id: 1,
@@ -90,10 +89,8 @@ export const statusData = [
     },
     {
         id: 5,
-        img: img1,
+        icon: icon5,
         text: 'this is a status text 1',
-        avatar: '',
-        name: '',
         statusData: [
             {
                 id: 1,
@@ -105,10 +102,8 @@ export const statusData = [
     },
     {
         id: 6,
-        img: img1,
+        icon: icon6,
         text: 'this is a status text 1',
-        avatar: '',
-        name: '',
         statusData: [
             {
                 id: 1,
