@@ -63,7 +63,7 @@ export default function ConfigScreen() {
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.buttonPress} onPress={() => { }}>
+                <TouchableOpacity style={styles.buttonPress} onPress={() => { navigation.navigate('DarkMode') }}>
                     <View style={styles.menuButton}>
                         <Image source={require('../assets/image/config/Dark-Icon.png')} style={styles.iconButton} />
                         <Text style={styles.buttonText}>Modo Dark</Text>

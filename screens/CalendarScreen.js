@@ -13,6 +13,7 @@ export default function CalendarScreen() {
   const [selectedTime, setSelectedTime] = useState('');
   const times = ["09:00", "12:00", "13:00", "14:00", "15:00", "16:00"];
   const navigation = useNavigation();
+  const today = new Date().toISOString().split('T')[0];
 
   const handleAgendamento = async () => {
     try {
@@ -69,6 +70,7 @@ export default function CalendarScreen() {
       <Calendar style={styles.calendar} onDayPress={(day) => handleDateSelect(day.dateString)} markedDates={{
         [selectedDate]: { selected: true, selectedColor: '#9e77dd' }
       }}
+      minDate={today}
         theme={{
           selectedDayBackgroundColor: '#9e77dd', todayTextColor: '#9e77dd',
           arrowColor: '#9e77dd',

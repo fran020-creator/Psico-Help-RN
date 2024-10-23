@@ -25,6 +25,7 @@ import Home from '../assets/image/navigator/home-Icon.png';
 import Calendar from '../assets/image/navigator/calendar-Icon.png';
 import Jornal from '../assets/image/navigator/info-Icon.png';
 import Perfil from '../assets/image/navigator/perfil-Icon.png';
+import ModoDarkScreen from '../screens/ModoDarkScreen';
 
 
 
@@ -134,6 +135,7 @@ export default function StackNavigator() {
 
                 <Stack.Screen name='Dinheiro' component={DinheiroScreen} options={{ headerShown: false }} />
 
+                <Stack.Screen name='DarkMode' component={ModoDarkScreen} options={{headerShown:false}}/>
                
 
             </Stack.Navigator>
