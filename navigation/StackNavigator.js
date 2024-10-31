@@ -32,6 +32,15 @@ import ModoDarkScreen from '../screens/ModoDarkScreen';
 
 export default function StackNavigator() {
 
+    const checkLoggedInStatus = async () => {
+        const token = await AsyncStorage.getItem("authToken");
+        if (token) {
+            // Se o token existe, navegue para a tela principal
+            return "Main";
+        }
+        return "Login"; // Se não, navegue para a tela de login
+    };
+
     const Tab = createBottomTabNavigator();
 
     function BottomTabs() {

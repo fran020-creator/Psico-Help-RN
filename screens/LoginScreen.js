@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
-import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StyleSheet, Text, View, Image, KeyboardAvoidingView, ActivityIndicator, TextInput, Pressable, Alert, Platform, Switch, StatusBar } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
-
-
 
 
 export default function LoginScreen() {
@@ -16,62 +13,83 @@ export default function LoginScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isEnabled, setIsEnabled] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleLogin = () => {
+  useEffect(() => {
+    checkIfLoggedIn(); // Chame a função ao montar o componente
+  }, []); // Array vazio para executar apenas uma vez
+
+  const checkIfLoggedIn = async () => {
+    try {
+      const keepLoggedIn = await AsyncStorage.getItem("keepLoggedIn");
+      const token = await AsyncStorage.getItem("authToken");
+
+      // Logs para verificar os valores
+      console.log("keepLoggedIn:", keepLoggedIn);
+      console.log("authToken:", token);
+
+      if (keepLoggedIn === "true" && token) {
+        setIsLoggedIn(true); // Se o usuário optou por manter-se logado e o token existe
+        navigation.replace("Main");
+      } else {
+        setIsLoggedIn(false); // Se a opção ou o token não existem, usuário não está logado
+      }
+    } catch (error) {
+      console.log("Erro ao verificar o login:", error);
+    }
+  };
+
+  const toggleSwitch = async () => {
+    setIsEnabled(previousState => !previousState);
+    const newValue = !isEnabled;
+
+    try {
+      await AsyncStorage.setItem("keepLoggedIn", newValue.toString());
+      console.log("KeepLoggedIn salvo com sucesso", newValue); //log keeploggedin
+    } catch (error) {
+      console.log("Erro ao salvar KeepLoggedIn:", error);
+    }
+  };
+
+  const handleLogin = async () => {
     const user = {
       email: email,
       password: password,
-    }
-    axios.post("http://192.168.0.223:8000/login", user).then((response) => {
+    };
+
+    try {
+      const response = await axios.post("http://192.168.0.223:8000/login", user);
       console.log(response);
+
       const token = response.data.token;
       const userEmail = response.data.email;
       const userName = response.data.name;
       const userIdade = response.data.idade;
       const userCelular = response.data.celular;
 
-      AsyncStorage.setItem("authToken", token);
-      AsyncStorage.setItem("userEmail", userEmail);
-      AsyncStorage.setItem("userName", userName);
-      AsyncStorage.setItem('userIdade', userIdade);
-      AsyncStorage.setItem('userCelular', userCelular);
-      navigation.replace("Main");
-    }).catch((error) => {
-      Alert.alert("login error", "invalid email");
-      console.log(error);
-    })
-  };
+      // log para verificar estado do token
+      AsyncStorage.setItem("authToken", token)
+        .then(() => console.log("Token salvo com sucesso"))
+        .catch((error) => console.log("Erro ao salvar o token:", error));
 
-  // Função para alternar o estado do Switch
-  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
-  const [isLoggedIn, setIsLoggedIn] = useState(null); // null: carregando, false: não logado, true: logado
-  const Stack = createNativeStackNavigator();
+      await AsyncStorage.setItem("authToken", token);
+      await AsyncStorage.setItem("userEmail", userEmail);
+      await AsyncStorage.setItem("userName", userName);
+      await AsyncStorage.setItem("userIdade", userIdade);
+      await AsyncStorage.setItem("userCelular", userCelular);
 
-  const checkIfLoggedIn = async () => {
-    try {
-      const token = await AsyncStorage.getItem('@auth_token');
-      if (token) {
-        setIsLoggedIn(true); // Se o token existe, usuário está logado
+      if (isEnabled) { // Se o Switch estiver ativo, salve a preferência de manter logado
+        await AsyncStorage.setItem("keepLoggedIn", "true");
       } else {
-        setIsLoggedIn(false); // Se o token não existe, não está logado
+        await AsyncStorage.removeItem("keepLoggedIn"); // Remova a preferência se o switch estiver desligado
       }
+
+      navigation.navigate("Main");
     } catch (error) {
-      console.log('Erro ao verificar o login:', error);
+      Alert.alert("Erro de login", "Email ou senha inválidos");
+      console.log(error);
     }
   };
-
-  useEffect (() => {
-    checkIfLoggedIn(); // Verifica o login quando o app inicia
-  }, []);
-
-  // Exibe um indicador de carregamento enquanto verifica o login
-  if (isLoggedIn === null) {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <ActivityIndicator size="large" color="#0000ff" />
-      </View>
-    );
-  }
 
   return (
 
@@ -88,31 +106,31 @@ export default function LoginScreen() {
       <KeyboardAvoidingView>
         <View style={styles.containerInput}>
           <Image source={require('../assets/image/register/user-Icon-Full.png')} style={styles.inputIcon} />
-          
+
           <TextInput style={styles.inputBox}
-          value={email} 
-          onChangeText={(text) => setEmail(text)} 
-          placeholder='Email' 
-          placeholderTextColor={'black'} 
-          keyboardType="email-address"
-          maxLength={40}
-          autoCapitalize="none"
-          scrollEnabled={true}
-          multiline={false}
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+            placeholder='Email'
+            placeholderTextColor={'black'}
+            keyboardType="email-address"
+            maxLength={40}
+            autoCapitalize="none"
+            scrollEnabled={true}
+            multiline={false}
           />
         </View>
 
         <View style={styles.containerInput}>
           <Image source={require('../assets/image/register/lock-Icon-Full.png')} style={styles.inputIcon} />
-          <TextInput style={styles.inputBox} 
-          value={password} 
-          onChangeText={(text) => setPassword(text)} 
-          secureTextEntry={true} 
-          placeholder='Senha' 
-          placeholderTextColor={'black'} 
-          maxLength={20}
-          scrollEnabled={true}
-          multiline={false}
+          <TextInput style={styles.inputBox}
+            value={password}
+            onChangeText={(text) => setPassword(text)}
+            secureTextEntry={true}
+            placeholder='Senha'
+            placeholderTextColor={'black'}
+            maxLength={20}
+            scrollEnabled={true}
+            multiline={false}
           />
         </View>
 
@@ -137,7 +155,6 @@ export default function LoginScreen() {
             ios_backgroundColor="#3e3e3e"
             onValueChange={toggleSwitch}
             value={isEnabled}
-            onPress={() => {checkIfLoggedIn()}}
           />
         </View>
 
