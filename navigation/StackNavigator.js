@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -26,11 +26,12 @@ import Calendar from '../assets/image/navigator/calendar-Icon.png';
 import Jornal from '../assets/image/navigator/info-Icon.png';
 import Perfil from '../assets/image/navigator/perfil-Icon.png';
 import ModoDarkScreen from '../screens/ModoDarkScreen';
-
+import BlackHomeIcon from '../assets/image/navigator/home-Icon-Full.png'
 
 
 
 export default function StackNavigator() {
+    const [activeTab, setActiveTab] = useState("Home");
 
     const checkLoggedInStatus = async () => {
         const token = await AsyncStorage.getItem("authToken");
@@ -43,21 +44,32 @@ export default function StackNavigator() {
 
     const Tab = createBottomTabNavigator();
 
-    function BottomTabs() {
+    function BottomTabs({navigation}) {
         return (
             <Tab.Navigator>
-                <Tab.Screen
-                    name="Home"
-                    component={HomeScreen}
-                    options={{
-                        headerShown: false, tabBarButton: (props) => (<TouchableOpacity onPress={() => navigation.navigate("Home")}
-                            {...props}>
-                            <Image source={Home} style={{ width: 27, height: 27, marginBottom: 10 }} />
-
-                        </TouchableOpacity>),
-                        tabBarLabel: () => null,
-
-                    }} />
+            <Tab.Screen
+                name="Home"
+                component={HomeScreen}
+                options={{
+                    headerShown: false,
+                    tabBarIcon: ({ focused }) => (
+                        <Image
+                            source={focused ? BlackHomeIcon : Home}
+                            style={{ width: 27, height: 27, marginBottom: 1 }}
+                        />
+                    ),
+                    tabBarButton: (props) => (
+                        <TouchableOpacity
+                            onPress={() => {
+                                setActiveTab("Home");
+                                navigation.navigate("Home");
+                            }}
+                            {...props}
+                        />
+                    ),
+                    tabBarLabel: () => null,
+                }}
+            />
 
                 <Tab.Screen
                     name="Calendar"
